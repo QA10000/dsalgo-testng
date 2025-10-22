@@ -8,8 +8,7 @@ import org.apache.logging.log4j.LogManager;
 	import org.openqa.selenium.safari.SafariDriver;
 	import org.openqa.selenium.safari.SafariOptions;
 	import io.github.bonigarcia.wdm.WebDriverManager;
-     import utilities.CommonUtils;
-
+    import utilities.CommonUtils;
 	public class DriverManager {
 	private static WebDriver driver=null;
 	private static final Logger LOG=LogManager.getLogger(DriverManager.class);
@@ -46,7 +45,7 @@ import org.apache.logging.log4j.LogManager;
 				LOG.info("Launching browser:" +browser_Name);
 				break;
 					
-				}
+				}// remove commented code
 				
 				
 			}

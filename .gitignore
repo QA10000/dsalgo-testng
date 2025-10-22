@@ -1,0 +1,14 @@
+.classpath
+.project
+.settings/
+target/
+test-output/
+reports/
+
+# Allure reports
+allure-results/
+allure-report/
+
+# TestNG reports
+test-output/
+logs/
