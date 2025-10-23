@@ -46,7 +46,6 @@ public class RegisterPage {
 	
 	public RegisterPage(WebDriver driver) {
 		this.driver = driver;
-// Use the shared instance
 		PageFactory.initElements(driver, this);
 	}
 	public void setScenarioContext(ScenarioContext scenariocontext) {
@@ -55,7 +54,7 @@ public class RegisterPage {
 	}
 
 	public String getTitle() {
-	return title;
+	    return driver.getTitle();
 	}
 
 	public void clickRegisterLink() {
@@ -174,12 +173,22 @@ public class RegisterPage {
 	
 	
 
-	public String getSuccessMessage() {
+	/*public String getSuccessMessage() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	 //   WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".alert.alert-primary")));
+	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".alert.alert-primary")));
 		return successMessage.getText().trim();
+	}*/
+	
+	public String getAlertMessage() {
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    WebElement alert = wait.until(
+	        ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".alert.alert-primary"))
+	    );
+	    return alert.getText().trim();
 	}
 
+
+	
 	public String getUsernameValidationMessage() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(usernametextbox));

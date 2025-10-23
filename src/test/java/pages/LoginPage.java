@@ -1,4 +1,4 @@
-package pages;
+/*package pages;
 
 import java.time.Duration;
 import java.util.List;
@@ -133,7 +133,7 @@ public class LoginPage {
 		submitForm();
     }
 	
-	public void validateLogin(io.cucumber.datatable.DataTable dataTable) {
+	/*public void validateLogin(io.cucumber.datatable.DataTable dataTable) {
 		List<Map<String, String>> users = dataTable.asMaps(String.class, String.class); 
 		validateLogin(users);
 	}
@@ -218,5 +218,5 @@ public class LoginPage {
 	}
 	
 	
-}
+}*/
 

@@ -2,18 +2,15 @@ package utilities;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Cell;
 
 import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -22,7 +19,7 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 public class ExcelReader {
 public static Map<String, String> readData(String filePath, String sheetName) {
 		Map<String, String> rowData = new HashMap<>();
-		List<Map<String, String>> data = new ArrayList<>();
+		//List<Map<String, String>> data = new ArrayList<>();
 		try (FileInputStream fis = new FileInputStream(filePath); Workbook workbook = WorkbookFactory.create(fis)) {
 
 			Sheet sheet = workbook.getSheet(sheetName);
