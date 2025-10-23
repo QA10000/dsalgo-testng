@@ -1,4 +1,4 @@
-/*package pages;
+package pages;
 
 import java.time.Duration;
 import java.util.List;
@@ -133,61 +133,66 @@ public class LoginPage {
 		submitForm();
     }
 	
-	/*public void validateLogin(io.cucumber.datatable.DataTable dataTable) {
-		List<Map<String, String>> users = dataTable.asMaps(String.class, String.class); 
-		validateLogin(users);
-	}
 	
 	public void validateLogin(String SheetName) {
 		List<Map<String, String>> users = ExcelReader.readMultiRowData(CommonUtils.EXCELREADER, SheetName);
 		validateLogin(users);
 	}
 	
+	
 	public void validateLogin(List<Map<String, String>> users) {
-		System.out.println("DEBUG: Number of data rows read from Excel: " + users.size());
-		for (Map<String, String> user : users) 
-		{
-			String username = Optional.ofNullable(user.get("username")).orElse("");
-		    String password = Optional.ofNullable(user.get("password")).orElse("");
-		    String isValidData = "";
-		    if(user.containsKey("isdatavalid"))
-		    	isValidData = Optional.ofNullable(user.get("isdatavalid")).orElse("");
-			
-				
-			boolean usernameEmpty = username == null || username.trim().isEmpty();
-	        boolean passwordEmpty = password == null || password.trim().isEmpty();
-	        System.out.println("usernameEmpty: " + usernameEmpty + ", passwordEmpty: " + passwordEmpty);
+	    System.out.println("DEBUG: Number of data rows read from Excel: " + users.size());
+
+	    for (Map<String, String> user : users) {
+	        String username = Optional.ofNullable(user.get("username")).orElse("").trim();
+	        String password = Optional.ofNullable(user.get("password")).orElse("").trim();
+	        String isDataValid = Optional.ofNullable(user.get("isdatavalid")).orElse("").trim();
+
+	        // Check for empty fields
+	        boolean isUsernameEmpty = username.isEmpty();
+	        boolean isPasswordEmpty = password.isEmpty();
+
+	        System.out.println("usernameEmpty: " + isUsernameEmpty + ", passwordEmpty: " + isPasswordEmpty);
 	        System.out.println("username: " + username + ", password: " + password);
-			login(username, password);
-			
-			String error = getErrorMessage();
-			if (usernameEmpty == false && passwordEmpty== false && isValidData=="N") {
-				
-				if ("Y".equalsIgnoreCase(isValidData) || isValidData.isEmpty()) {
 
-			     	Assert.assertTrue(error.contains("Invalid Username and Password"));
-				}			
- 			     else if ("N".equalsIgnoreCase(isValidData)) {
+	        // Attempt login
+	        login(username, password);
 
-	 		    	Assert.assertTrue(error.contains("Invalid Username and Password"));
-				}
-			}
-			
-			if (usernameEmpty) {
+	        // Get error message (if any)
+	        String errorMessage = getErrorMessage();
+
+	        // Check login failure for invalid data
+	        if (!isUsernameEmpty && !isPasswordEmpty && "N".equalsIgnoreCase(isDataValid)) {
+	            // Expect error message for invalid credentials
+	            Assert.assertTrue(
+	                errorMessage.contains("Invalid Username and Password"),
+	                "Expected error message for invalid credentials not found." );
+	        }
+
+	        // Validate browser validation message for missing username
+	        if (isUsernameEmpty) {
 	            String actualUsernameMessage = getUsernameValidationMessage();
 	            System.out.println("actualUsernameMessage: " + actualUsernameMessage);
 	            String expectedUsernameMessage = "Please fill out this field.";
-	    		Assert.assertTrue(actualUsernameMessage.contains(expectedUsernameMessage));
+	            Assert.assertTrue(
+	                actualUsernameMessage.contains(expectedUsernameMessage),
+	                "Username validation message mismatch."
+	            );
 	        }
 
-	        if (passwordEmpty) {
-	            String actualPasswordValidationMessage = getPasswordValidationMessage();
-	            System.out.println("actualUsernameMessage: " + actualPasswordValidationMessage);
-	    		String expectedPasswordValidationMessage = "Please fill out this field.";
-	    		Assert.assertTrue(actualPasswordValidationMessage.contains(expectedPasswordValidationMessage));
+	        // Validate browser validation message for missing password
+	        if (isPasswordEmpty) {
+	            String actualPasswordMessage = getPasswordValidationMessage();
+	            System.out.println("actualPasswordMessage: " + actualPasswordMessage);
+	            String expectedPasswordMessage = "Please fill out this field.";
+	            Assert.assertTrue(
+	                actualPasswordMessage.contains(expectedPasswordMessage),
+	                "Password validation message mismatch." );
 	        }
-		}
+	    }
 	}
+
+
 	
 	public void logout () {
 		Signout.click();
@@ -218,5 +223,5 @@ public class LoginPage {
 	}
 	
 	
-}*/
+	}
 
