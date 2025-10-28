@@ -6,47 +6,7 @@ import java.util.Map;
 import org.testng.annotations.DataProvider;
 import utilities.ExcelReader;
 
-/*public class ExcelDataProvider {
 
-    @DataProvider(name = "excelData")
-    public static Object[][] getTestDataForDataProvider() {
-        String filePath = System.getProperty("user.dir") + "/src/test/resources/testData/testdata.xlsx";
-        String sheetName = "Sheet1";
-        List<Map<String, String>> dataList = ExcelReader.readMultiRowData(filePath, sheetName);
-        Object[][] testData = new Object[dataList.size()][1];
-
-        for (int i = 0; i < dataList.size(); i++) {
-            testData[i][0] = dataList.get(i); // each test gets one row (map)
-        }
-
-        return testData;
-    }
-    @DataProvider(name = "excelDataInvalid")
-    public static Object[][] getTestInvalidDataForDataProvider() {
-        String filePath = System.getProperty("user.dir") + "/src/test/resources/testData/testdata.xlsx";
-        String sheetName = "Sheet3";
-        List<Map<String, String>> dataList = ExcelReader.readMultiRowData(filePath, sheetName);
-        Object[][] testData = new Object[dataList.size()][1];
-        for (int i = 0; i < dataList.size(); i++) {
-            testData[i][0] = dataList.get(i); // each test gets one row (map)
-        }
-
-        return testData;
-    }
-    @DataProvider(name = "excelDataEmpty")
-    public static Object[][]getTestDataEmptyDataProvider() {
-    	String filePath = System.getProperty("user.dir") + "/src/test/resources/testData/testdata.xlsx";
-        String sheetName = "Sheet4";
-        List<Map<String, String>> dataList = ExcelReader.readMultiRowData(filePath, sheetName);
-        Object[][] testData = new Object[dataList.size()][1];
-        for (int i = 0; i < dataList.size(); i++) {
-            testData[i][0] = dataList.get(i); // each test gets one row (map)
-        }
-
-        return testData;
-    	
-    }*/
-    
     public class ExcelDataProvider {
 
     private static Object[][] loadTestData(String sheetName) {
@@ -75,5 +35,24 @@ import utilities.ExcelReader;
     public static Object[][] getEmptyData() {
         return loadTestData("Sheet4");
     }
+    
+    @DataProvider(name = "excelDataOptions")
+    public static Object[][] getOptionData() {
+        return loadTestData("Sheet5");
+    }
+    
+    
+    @DataProvider(name = "excelDataValidOptions")
+    public static Object[][] getOptionValidData() {
+        return loadTestData("Sheet6");
+    }
+    
+    @DataProvider(name = "runArrayData")
+    public Object[][] getSearchArrayData() {
+        return new Object[][] {
+            { "print('Hello QATitans!')", "Hello QATitans!" }
+        };
+    }
 }
+
 

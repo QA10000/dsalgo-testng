@@ -40,7 +40,7 @@ public class Background {
 		return driver.getTitle();
 	}
 	
-	public void ClickGetStarted() {
+	public void clickGetStarted() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(getStartedBtn));
 		getStartedBtn.click();
