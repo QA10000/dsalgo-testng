@@ -1,25 +1,24 @@
 package testCases;
-
 import org.apache.logging.log4j.LogManager;
-
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import driverfactory.DriverManager;
 import utilities.CommonUtils;
 
 public class Hooks {
-	public static WebDriver driver;
-	private static final Logger LOG=LogManager.getLogger(Hooks.class);
-	
-	@BeforeMethod
-    public void beforeScenario() {
+    private static final Logger LOG = LogManager.getLogger(Hooks.class);
+
+    @BeforeMethod
+    @Parameters("browser")
+    public void beforeScenario(@Optional("firefox") String browser) {
         try {
-            CommonUtils.loadProperties();
-            driver = DriverManager.launchBrowser();
-            driver.manage().window().maximize();
-            LOG.info("Browser is launched and maximized.");
+          CommonUtils.loadProperties(); 
+          DriverManager.launchBrowser(browser); // thread-safe browser launch
+            DriverManager.getDriver().manage().window().maximize();
+            LOG.info("Browser is launched and maximized: " + browser);
         } catch (Exception e) {
             LOG.error("Failed to launch browser", e);
             throw new RuntimeException("Browser launch failed", e);
@@ -28,14 +27,10 @@ public class Hooks {
 
     @AfterMethod
     public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-            LOG.info("Browser session closed.");
-            driver = null;  // reset driver after quitting
-        }
+        DriverManager.quitDriver();  // safely quit and remove thread-local WebDriver
+        LOG.info("Browser session closed.");
     }
-
-    public static WebDriver getDriver() {
-        return driver;
-    }
+  
 }
+
+
