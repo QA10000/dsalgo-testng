@@ -47,6 +47,16 @@ import utilities.ExcelReader;
         return loadTestData("Sheet6");
     }
     
+    @DataProvider(name = "excelDataHome")
+    public static Object[][] getOptionData() {
+        return loadTestData("Sheet11");
+    }
+    
+    
+    @DataProvider(name = "excelDataDataStructure")
+    public static Object[][] getOptionValidData() {
+        return loadTestData("Sheet12");
+    }    
     @DataProvider(name = "runArrayData")
     public Object[][] getSearchArrayData() {
         return new Object[][] {
