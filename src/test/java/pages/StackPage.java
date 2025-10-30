@@ -1,9 +1,12 @@
 package pages;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,6 +24,8 @@ public class StackPage {
 	
 	@FindBy(xpath = "//a[@href and normalize-space(text()) != '']")
     private List<WebElement> navigationLinks;
+	
+	private static final Logger logger = LogManager.getLogger(StackPage.class);
 
 	public StackPage(WebDriver driver) {
 		System.out.println(">> StackPage constructor.");		
@@ -28,7 +33,7 @@ public class StackPage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public void clicklinkedListGetStarted() {
+	public void clickStackGetStarted() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(stackGetStarted));
 		stackGetStarted.click();
@@ -59,6 +64,17 @@ public class StackPage {
 	public boolean areAllExpectedLinksPresent(List<String> expectedLinks) {
 	    List<String> actualLinks = getAllLinkTexts();
 	    return actualLinks.containsAll(expectedLinks);
+	}
+	
+	public List<String> verifyAllExpectedLinksArePresent(List<String> expectedLinks, List<String> actualLinks) {
+		logger.info("actualLinks : " + actualLinks.toString());
+		List<String> missing = new ArrayList<>();
+		for (String expected : expectedLinks) {
+			if (!actualLinks.contains(expected)) {
+				missing.add(expected);
+			}
+		}
+		return missing;
 	}
 }
 

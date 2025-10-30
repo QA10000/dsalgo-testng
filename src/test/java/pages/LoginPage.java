@@ -158,11 +158,12 @@ public class LoginPage {
 	        // Attempt login
 	        login(username, password);
 
-	        // Get error message (if any)
-	        String errorMessage = getErrorMessage();
+	        
 
 	        // Check login failure for invalid data
 	        if (!isUsernameEmpty && !isPasswordEmpty && "N".equalsIgnoreCase(isDataValid)) {
+	        	// Get error message (if any)
+		        String errorMessage = getErrorMessage();
 	            // Expect error message for invalid credentials
 	            Assert.assertTrue(
 	                errorMessage.contains("Invalid Username and Password"),
