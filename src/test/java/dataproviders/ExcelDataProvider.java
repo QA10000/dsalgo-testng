@@ -48,17 +48,17 @@ import utilities.ExcelReader;
     }
     
     @DataProvider(name = "excelDataHome")
-    public static Object[][] getOptionData() {
+    public static Object[][] getHomeData() {
         return loadTestData("Sheet11");
     }
     
-    
-    @DataProvider(name = "excelDataDataStructure")
-    public static Object[][] getOptionValidData() {
+   
+    @DataProvider(name = "excelDataStructureData")
+    public static Object[][] getDataStructureData() {
         return loadTestData("Sheet12");
     }    
-    @DataProvider(name = "runArrayData")
-    public Object[][] getSearchArrayData() {
+    @DataProvider(name = "runHomeData")
+    public Object[][] getSearchHomeData() {
         return new Object[][] {
             { "print('Hello QATitans!')", "Hello QATitans!" }
         };

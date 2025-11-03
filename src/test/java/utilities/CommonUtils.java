@@ -80,7 +80,19 @@ public class CommonUtils {
     public static List<String> LINKLISTSUBPAGE_LINKS;
     public static List<String> LINKLISTPAGE_HEADERS;
     public static List<String> STACKPAGE_LINKS;
-
+    public static String NOT_SIGNED_IN_MESSAGE;
+    public static String DS_DROP_DOWN_LABEL;
+    public static String NUMPY_NINJA_LABEL;
+    public static String ARRAY_LABEL;
+    public static String STACK_LABEL; 
+    public static String GRAPH_LABEL;
+    public static String TREE_LABEL;    
+    public static String LINKED_LIST_LABEL;
+    public static String QUEUE_LABEL;
+    public static String SIGNIN_LINK_TEXT;
+    public static String SIGNOUT_LINK_TEXT;
+    public static String REGISTER_LINK_TEXT;
+    
     static Properties properties = new Properties();
 
     public static void loadProperties() {
@@ -103,7 +115,19 @@ public class CommonUtils {
             DS_URL = safeGet("dataStructurePage");
             DS_TS_URL = safeGet("dataStructuresTimeComp");
             TRY_EDTR_URL = safeGet("tryEditorPage");
-
+            NOT_SIGNED_IN_MESSAGE = safeGet("NotSignedInMessage");
+            DS_DROP_DOWN_LABEL = safeGet("DSDropDownLabel");
+            NUMPY_NINJA_LABEL = safeGet("NumpyNinjaLabel");            
+            ARRAY_LABEL = safeGet("ArrayLabel");
+            QUEUE_LABEL = safeGet("QueueLabel");            
+            LINKED_LIST_LABEL = safeGet("LinkedListLabel");
+            TREE_LABEL = safeGet("TreeLabel");
+            STACK_LABEL = safeGet("StackLabel");
+            QUEUE_LABEL = safeGet("QueueLabel");
+            SIGNIN_LINK_TEXT = safeGet("signInLinkTxt");
+            SIGNOUT_LINK_TEXT = safeGet("signOutLinkTxt");            
+            REGISTER_LINK_TEXT = safeGet("registerLinkTxt");            
+            
             LINKLISTPAGE_LINKS = parseList("LinkedListPageLinks");
             LINKLISTSUBPAGE_LINKS = parseList("LinkedListSubPageLinks");
             LINKLISTPAGE_HEADERS = parseList("LinkedListPageHeaders");
