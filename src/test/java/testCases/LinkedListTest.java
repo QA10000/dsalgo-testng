@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -20,11 +21,12 @@ public class LinkedListTest extends Hooks{
 	
 	@BeforeMethod
 	public void setUp() {
-	    driver = Hooks.getDriver();
+		WebDriver driver = null;
+	    // driver = Hooks.getDriver();
 	    background = new Background(driver);
 	    linkedlistpage = new LinkedListPage(driver);
 	    background.launchUrl();
-	    background.ClickGetStarted();
+	    // background.ClickGetStarted();
 	    background.userLoggedin();
 	}
 

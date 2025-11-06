@@ -3,6 +3,7 @@ package testCases;
 import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -21,11 +22,12 @@ public class StackTest extends Hooks{
 	
 	@BeforeMethod
 	public void setUp() {
-	    driver = Hooks.getDriver();
+		WebDriver driver = null;
+	    // driver = Hooks.getDriver();
 	    background = new Background(driver);
 	    stackpage = new StackPage(driver);
 	    background.launchUrl();
-	    background.ClickGetStarted();
+	    //background.ClickGetStarted();
 	    background.userLoggedin();
 	}
 	
@@ -43,7 +45,7 @@ public class StackTest extends Hooks{
 	public void testTheOperationsLinks() {
 		stackpage.clickStackGetStarted();
 		stackpage.clickOperationsinStackLink();
-		List<String> expectedLinks = PageLinks.getLinksForModules(Module.COMMON, Module.STACK, Module.ALLSUBMODULES);
+		List<String> expectedLinks = PageLinks.getLinksForModules(Module.COMMON, Module.STACK, Module.ALLSUBMODULES);    
 		List<String> actualLinks = stackpage.getAllLinkTexts();
 		logger.info("StackTest::actualLinks: " + actualLinks.toString());
 		List<String> missing = stackpage.verifyAllExpectedLinksArePresent(expectedLinks, actualLinks);
@@ -51,7 +53,7 @@ public class StackTest extends Hooks{
 	}
 	
 	@Test(priority = 3)
-	public void testTheImplementationLinks() {
+	public void testTheImplementationLinks() {   
 		stackpage.clickStackGetStarted();
 		stackpage.clickImplementationLink();
 		List<String> expectedLinks = PageLinks.getLinksForModules(Module.COMMON, Module.STACK, Module.ALLSUBMODULES);
