@@ -12,7 +12,7 @@ import pages.HomePage;
 import pages.Background;
 import utilities.CommonUtils;
 
-public class HomeTest extends Hooks {
+public class HomeTest extends Hooks {  
 	private Background background;
 	private HomePage homepage;
 	private static final Logger logger = LogManager.getLogger(HomeTest.class);

@@ -29,7 +29,6 @@ public class DSIntroTest extends Hooks {
 		}
 		background = new Background(driver);
 		homepage = new HomePage(driver);
-		dspage = new DataStructurePage(driver);
 		background.launchUrl();
 		background.clickGetStarted();
 		String actualTitle = homepage.getTitle();
@@ -38,12 +37,6 @@ public class DSIntroTest extends Hooks {
 		Assert.assertNotNull(actualTitle, "Title was null - possible page load failure?");
 		Assert.assertTrue(actualTitle.contains(expectedTitle), "Home page title mismatch");
 		logger.info("user navigated to home page");
-		dspage.Login();
-		dspage.CorrectUsernameAndPassword(CommonUtils.USERNAME, CommonUtils.PASSWORD);
-		String actualMessage = dspage.getLoginSuccessMessage();
-		String expectedMessage = CommonUtils.SIGNED_IN_MESSAGE;
-		logger.info("DataStructurePanel: The user should able to see a warning message : "+actualMessage+" || Expected Message : "+expectedMessage);
-	    Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Warning message mismatch!");
 	}
 
 	@Test(priority = 1)
@@ -52,25 +45,15 @@ public class DSIntroTest extends Hooks {
 		logger.info("user navigated to home page");
 	}
 	
-	@Test(priority = 3)
-	public void userClicksGetStartedButtonUnderDSIntroductionPanel() {
-		dspage.clickDataStructuresGetStarted();
-		dspage.dataStructuresIntroPage();
-		Assert.assertTrue(dspage.dsLabelDisplayed(), "Data Structure page header not visible!");
-		logger.info("The user lands on Data Structures introduction page");
+	@Test(priority = 2)
+	public void userClicksGetStartedButtonOnDataStructurePanel() {
+		homepage.clickGetStartedButtonHomePageDSIntroModule();
+		String expectedMessage = CommonUtils.NOT_SIGNED_IN_MESSAGE;
+		String actualMessage = homepage.getnotlogedMessage();
+		logger.info("DataStructurePanel: The user should able to see a warning message : "+actualMessage+" || Expected Message : "+expectedMessage);
+	    Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Warning message mismatch!");
 	}
 	
-	@Test(priority = 4)
-	public void userShouldBeRedirectedToTimeComplexityPage() {
-		dspage.clickDataStructuresGetStarted();
-		dspage.dataStructuresIntroPage();
-		Assert.assertTrue(dspage.dsLabelDisplayed(), "Data Structure page header not visible!");
-		logger.info("The user lands on Data Structures introduction page");		
-		//dspage.clickTimeComplexity();
-		// dspage.timeComplexityPage();
-		// Assert.assertTrue(dspage.timeComplexityLabelDisplayed(), "Data Structure: Time Complexity page header not visible!");
-	}
-
 	@Test(priority = 9)
 	public void userSeesDropdownOnTopLeftCorner() {
 		String actualLabel = homepage.getDataStructureLblText();
@@ -88,20 +71,18 @@ public class DSIntroTest extends Hooks {
 	}	
 
 	@Test(priority = 11)
-	public void checkUserName() {
-		// String actualLabel = homepage.getRegisterLinkText();
-		String actualLabel = dspage.getUsernameLblText();
-		//String expectedLabel = CommonUtils.USERNAME;
-		String expectedLabel = new String("Qatitans1");
-		logger.info("Verifying that the user sees UserName");
-		Assert.assertEquals(actualLabel, expectedLabel, "UserName Text mismatch!");
+	public void checkRegisterLinkText() {
+		String actualLabel = homepage.getRegisterLinkText();
+		String regLinkLabel = CommonUtils.REGISTER_LINK_TEXT;
+		logger.info("Verifying that the user sees Register link");
+		Assert.assertEquals(actualLabel, regLinkLabel, "Reg. Link Text mismatch!");
 	}
 
 	@Test(priority = 12)
-	public void checkSignOutLinkText() {
-		String actualLinkText = dspage.getSignOutLinkText();
-		String expectedSigninLinkLabel = CommonUtils.SIGNOUT_LINK_TEXT;
-		logger.info("Verifying that user sees Sign Out Link");
-		Assert.assertEquals(actualLinkText, expectedSigninLinkLabel, "Sign Out Link Text mismatch!");
+	public void checkSignInLinkText() {
+		String actualLinkText = homepage.getSigninLinkText();
+		String expectedSigninLinkLabel = CommonUtils.SIGNIN_LINK_TEXT;
+		logger.info("Verifying that the user sees Signin Link");
+		Assert.assertEquals(actualLinkText, expectedSigninLinkLabel, "Sign-In. Link Text mismatch!");
 	}
 }
