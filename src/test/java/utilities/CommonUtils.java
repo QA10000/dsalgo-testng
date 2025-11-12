@@ -93,7 +93,6 @@ public class CommonUtils {
     public static String SIGNIN_LINK_TEXT;
     public static String SIGNOUT_LINK_TEXT;
     public static String REGISTER_LINK_TEXT;
-    
     static Properties properties = new Properties();
 
     public static void loadProperties() {
@@ -116,6 +115,7 @@ public class CommonUtils {
             DS_URL = safeGet("dataStructurePage");
             DS_TS_URL = safeGet("dataStructuresTimeComp");
             TRY_EDTR_URL = safeGet("tryEditorPage");
+
             SIGNED_IN_MESSAGE = safeGet("SignedInMessage");
             NOT_SIGNED_IN_MESSAGE = safeGet("NotSignedInMessage");
             DS_DROP_DOWN_LABEL = safeGet("DSDropDownLabel");
@@ -129,7 +129,6 @@ public class CommonUtils {
             SIGNIN_LINK_TEXT = safeGet("signInLinkTxt");
             SIGNOUT_LINK_TEXT = safeGet("signOutLinkTxt");            
             REGISTER_LINK_TEXT = safeGet("registerLinkTxt");            
-            
             LINKLISTPAGE_LINKS = parseList("LinkedListPageLinks");
             LINKLISTSUBPAGE_LINKS = parseList("LinkedListSubPageLinks");
             LINKLISTPAGE_HEADERS = parseList("LinkedListPageHeaders");

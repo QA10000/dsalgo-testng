@@ -25,6 +25,11 @@ import utilities.ExcelReader;
     public static Object[][] getValidData() {
         return loadTestData("Sheet1");
     }
+    
+    @DataProvider(name = "excelAllData")
+    public static Object[][] getAllData() {
+        return loadTestData("Sheet2");
+    }
 
     @DataProvider(name = "excelDataInvalid")
     public static Object[][] getInvalidData() {
