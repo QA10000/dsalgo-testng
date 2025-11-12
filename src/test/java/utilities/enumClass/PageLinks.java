@@ -26,12 +26,20 @@ public enum PageLinks{
 	INSERTION_LINKEDLIST("LinkedList","Insertion"),
 	DELETION_LINKEDLIST("LinkedList","Deletion"),
 
-
 	//Stack Module
 	OPERATIONSINSTACK_STACK("Stack","Operations in Stack"),
 	IMPLEMENTATION_STACK("Stack","Implementation"),
 	APPLICATIONS_STACK("Stack","Applications"),
 
+	//Home Module
+	ONE_HOME("Home","Operations in Home"),
+	TWO_HOME("Home","Implementation"),
+	THREE_HOME("Home","Applications"),
+	
+	//DSINTRO Module
+	ONE_DSINTRO("DSIntro","Operations in DSIntro"),
+	TWO_DSINTRO("Intro","Implementation"),
+	THREE_DSINTRO("Intro","Applications"),	
 	 
 	//Array module for now
 	TIMECOMPLEXITY_ARRAYS("Array","Time Complexity"),

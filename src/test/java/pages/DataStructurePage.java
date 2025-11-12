@@ -79,7 +79,9 @@ public class DataStructurePage {
     String successMessage = "";
 
     // URLs
-    String loginPageURL = "https://dsportalapp.herokuapp.com/login";
+    String loginPageURL = CommonUtils.LOGIN_URL;
+    // String loginPageURL = "https://dsportalapp.herokuapp.com/login";
+    // loginpageURL=https://dsportalapp.herokuapp.com/login
     String dataStructurePage = CommonUtils.DS_URL;
     String dataStructuresTimeComp = CommonUtils.DS_TS_URL;
     String tryEditorPage = CommonUtils.TRY_EDTR_URL;

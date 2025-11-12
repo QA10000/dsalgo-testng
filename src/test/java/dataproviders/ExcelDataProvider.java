@@ -52,8 +52,18 @@ import utilities.ExcelReader;
         return loadTestData("Sheet6");
     }
     
-    @DataProvider(name = "runArrayData")
-    public Object[][] getSearchArrayData() {
+    @DataProvider(name = "excelDataHome")
+    public static Object[][] getHomeData() {
+        return loadTestData("Sheet11");
+    }
+    
+   
+    @DataProvider(name = "excelDataStructureData")
+    public static Object[][] getDataStructureData() {
+        return loadTestData("Sheet12");
+    }    
+    @DataProvider(name = "runHomeData")
+    public Object[][] getSearchHomeData() {
         return new Object[][] {
             { "print('Hello QATitans!')", "Hello QATitans!" }
         };
