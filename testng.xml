@@ -10,7 +10,7 @@
 
 		<classes>
 			<class name="testCases.HomeTest" />
-			<class name="testCases.DataStructureIntroTest" />
+			<class name="testCases.DSIntroTest" />
 		</classes>
 	</test>
 	<!--  test name="FirefoxTest">
