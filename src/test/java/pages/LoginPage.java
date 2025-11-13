@@ -1,10 +1,14 @@
 package pages;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -50,6 +54,11 @@ public class LoginPage {
 	
 	@FindBy(xpath="/html/body/div[2]")
 	private WebElement logoutMessage;
+
+	@FindBy(xpath = "//a[@href and normalize-space(text()) != '']")
+	private List<WebElement> navigationLinks; //= new ArrayList<>();
+	
+	private static final Logger logger = LogManager.getLogger(LoginPage.class);
 	
 	public LoginPage(WebDriver driver) {
 		System.out.println(">> LoginPage constructor.");		
@@ -223,6 +232,23 @@ public class LoginPage {
 		return Uservalidationmessage;
 	}
 	
+	public List<String> getAllLinkTexts() {
+		return navigationLinks.stream()
+                .map(link -> link.getText().trim()) 
+                .collect(Collectors.toList());
+    }
 	
+	public List<String> verifyAllExpectedLinksArePresent(List<String> expectedLinks, List<String> actualLinks) {
+		logger.info("actualLinks : " + actualLinks.toString());
+		List<String> missing = new ArrayList<>();
+		for (String expected : expectedLinks) {
+			if (!actualLinks.contains(expected)) {
+				missing.add(expected);
+			}
+		}
+		return missing;
 	}
+	
+	
+}
 

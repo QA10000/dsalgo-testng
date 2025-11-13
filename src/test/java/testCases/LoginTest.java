@@ -12,8 +12,11 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import dataproviders.ExcelDataProvider;
+import driverfactory.DriverManager;
 import pages.Background;
 import pages.LoginPage;
+import utilities.enumClass.Module;
+import utilities.enumClass.PageLinks;
 
 
 public class LoginTest extends Hooks{
@@ -23,12 +26,17 @@ public class LoginTest extends Hooks{
 	
 	@BeforeMethod
 	public void setUp() {
-		WebDriver driver = null;		
-	    // driver = Hooks.getDriver();
+		WebDriver driver = null;
+		try {
+			driver = DriverManager.getDriver();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	    background = new Background(driver);
 	    loginpage = new LoginPage(driver);
 	    background.launchUrl();
-	    // background.ClickGetStarted();
+	    background.clickGetStarted();
+
 	}
 	
 	@Test(priority = 1)
@@ -94,5 +102,16 @@ public class LoginTest extends Hooks{
 		String expectedLabel = "Data Structures";
 		String actualLabel = loginpage.getDataStructureDropdownText();
         Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
+	}
+	
+	@Test(priority = 9)
+	public void testLoginLinks() {
+		//stackpage.clickStackGetStarted();
+		//loginpage.clickImplementationLink();
+		List<String> expectedLinks = PageLinks.getLinksForModules(Module.LOGIN);
+		List<String> actualLinks = loginpage.getAllLinkTexts();
+		logger.info("LoginTest::actualLinks: " + actualLinks.toString());
+		List<String> missing = loginpage.verifyAllExpectedLinksArePresent(expectedLinks, actualLinks);
+		Assert.assertTrue(missing.isEmpty(),"These expected links were missing: " + missing + "\nActual list: " + actualLinks);
 	}
 }

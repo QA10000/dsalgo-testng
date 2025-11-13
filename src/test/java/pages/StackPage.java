@@ -22,8 +22,13 @@ public class StackPage {
 	@FindBy(xpath = "//div[@class='card-body d-flex flex-column'][h5[text()='Stack']]//a[contains(@href, 'stack')]")
 	private WebElement stackGetStarted;
 	
+	@FindBy(xpath = "//a[@href='/tryEditor']")
+	private WebElement tryHereButton;
+	
 	@FindBy(xpath = "//a[@href and normalize-space(text()) != '']")
     private List<WebElement> navigationLinks;
+	
+	
 	
 	private static final Logger logger = LogManager.getLogger(StackPage.class);
 
@@ -39,7 +44,7 @@ public class StackPage {
 		stackGetStarted.click();
 	}
 	
-	public void clickLinkedListOption(String optionName) {
+	public void clickStackOption(String optionName) {
         driver.findElement(By.linkText(optionName)).click();
     }
 	
@@ -65,6 +70,10 @@ public class StackPage {
 	    List<String> actualLinks = getAllLinkTexts();
 	    return actualLinks.containsAll(expectedLinks);
 	}
+	
+	public void clickTryHere() {
+		tryHereButton.click();
+	}	
 	
 	public List<String> verifyAllExpectedLinksArePresent(List<String> expectedLinks, List<String> actualLinks) {
 		logger.info("actualLinks : " + actualLinks.toString());
