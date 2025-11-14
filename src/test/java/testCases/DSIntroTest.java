@@ -1,5 +1,7 @@
 package testCases;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -12,6 +14,8 @@ import pages.HomePage;
 import pages.Background;
 import pages.DataStructurePage;
 import utilities.CommonUtils;
+import utilities.enumClass.Module;
+import utilities.enumClass.PageLinks;
 
 public class DSIntroTest extends Hooks { 
 	private Background background;
@@ -29,6 +33,7 @@ public class DSIntroTest extends Hooks {
 		}
 		background = new Background(driver);
 		homepage = new HomePage(driver);
+		dspage = new DataStructurePage(driver);
 		background.launchUrl();
 		background.clickGetStarted();
 		String actualTitle = homepage.getTitle();
@@ -84,5 +89,16 @@ public class DSIntroTest extends Hooks {
 		String expectedSigninLinkLabel = CommonUtils.SIGNIN_LINK_TEXT;
 		logger.info("Verifying that the user sees Signin Link");
 		Assert.assertEquals(actualLinkText, expectedSigninLinkLabel, "Sign-In. Link Text mismatch!");
+	}
+	
+	@Test(priority = 13)
+	void testAllLinksInStack() {
+		background.userLoggedin();
+		dspage.clickDSIntroGetStarted();
+		List<String> expectedLinks = PageLinks.getLinksForModules(Module.COMMON, Module.DSINTRO);
+		List<String> actualLinks = dspage.getAllLinkTexts();
+		logger.info("StackTest::actualLinks: " + actualLinks.toString()+ " ExpectedLinks: "+expectedLinks);
+		List<String> missing = dspage.verifyAllExpectedLinksArePresent(expectedLinks, actualLinks);
+		Assert.assertTrue(missing.isEmpty(),"These expected links were missing: " + missing + "\nActual list: " + actualLinks);
 	}
 }
