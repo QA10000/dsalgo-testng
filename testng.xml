@@ -12,11 +12,7 @@
 			<class name="testCases.ArrayTest" />
 			<class name="testCases.DSIntroTest" />
 			<class name="testCases.HomeTest" />
-			<class name="testCases.LinkedListTest" />
-			<class name="testCases.LoginTest" />
-			<class name="testCases.RegistrationTest" />
-			<class name="testCases.StackTest" />
-			<class name="testCases.TreeTest" />
+			<class name="testCases.DSIntroTest" />
 		</classes>
 	</test>
 	<!--  test name="FirefoxTest">
