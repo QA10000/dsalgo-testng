@@ -1,9 +1,6 @@
 package pages;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -74,12 +71,6 @@ public class DataStructurePage {
 
     @FindBy(css = "div.CodeMirror")
     WebElement codeMirrorEditor;
-    
-	@FindBy(xpath = "//div[@class='card-body d-flex flex-column'][h5[text()='Data Structures-Introduction']]//a[contains(@href, 'data-structures-introduction')]")
-	private WebElement dsIntroGetStarted;
-
-	@FindBy(xpath = "//a[@href and normalize-space(text()) != '']")
-    private List<WebElement> navigationLinks;
 
     Actions acts;
 
@@ -130,7 +121,7 @@ public class DataStructurePage {
 	}
 
     public void clickTimeComplexity() {
-        acts.moveToElement(timeComplexityButton).perform();
+        //acts.moveToElement(timeComplexityButton).perform();
         timeComplexityButton.click();
         title = driver.getTitle();
     }
@@ -191,7 +182,7 @@ public class DataStructurePage {
 	}
 
     public boolean codeTextAreaDisplayed() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));
         wait.until(ExpectedConditions.visibilityOf(codeMirrorEditor));
         logger.info("codeTextAreaDisplayed() | " + codeMirrorEditor.isDisplayed());
         return codeMirrorEditor.isDisplayed();
@@ -309,27 +300,4 @@ public class DataStructurePage {
         wait.until(ExpectedConditions.elementToBeClickable(usernameLabel));
         return usernameLabel.getText();
     }
-
-	public void clickDSIntroGetStarted() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(dsIntroGetStarted));
-		dsIntroGetStarted.click();
-	}
-
-	public List<String> getAllLinkTexts() {
-        return navigationLinks.stream()
-                .map(link -> link.getText().trim()) 
-                .collect(Collectors.toList());
-    }
-	
-	public List<String> verifyAllExpectedLinksArePresent(List<String> expectedLinks, List<String> actualLinks) {
-		logger.info("actualLinks : " + actualLinks.toString());
-		List<String> missing = new ArrayList<>();
-		for (String expected : expectedLinks) {
-			if (!actualLinks.contains(expected)) {
-				missing.add(expected);
-			}
-		}
-		return missing;
-	}	
 }

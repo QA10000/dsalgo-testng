@@ -93,6 +93,7 @@ public class CommonUtils {
     public static String SIGNIN_LINK_TEXT;
     public static String SIGNOUT_LINK_TEXT;
     public static String REGISTER_LINK_TEXT;
+    public static String TIME_COMPLEXITY_TITLE;    
 
     static Properties properties = new Properties();
 
@@ -127,7 +128,8 @@ public class CommonUtils {
             QUEUE_LABEL = safeGet("QueueLabel");
             SIGNIN_LINK_TEXT = safeGet("signInLinkTxt");
             SIGNOUT_LINK_TEXT = safeGet("signOutLinkTxt");            
-            REGISTER_LINK_TEXT = safeGet("registerLinkTxt");            
+            REGISTER_LINK_TEXT = safeGet("registerLinkTxt");
+            TIME_COMPLEXITY_TITLE = safeGet("timeComplexityTitle");
 
             LINKLISTPAGE_LINKS = parseList("LinkedListPageLinks");
             LINKLISTSUBPAGE_LINKS = parseList("LinkedListSubPageLinks");
