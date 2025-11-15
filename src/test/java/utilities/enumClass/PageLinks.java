@@ -14,6 +14,11 @@ public enum PageLinks{
 	//QATITANS1("Qatitans1"),
 	SIGNOUT_COMMON("Common","Sign out"),
 	
+	NUMPYNINJA_LOGIN("Login","NumpyNinja"),
+	DATASTRUCTURES_LOGIN("Login","Data Structures"),
+	SIGNIN_LOGIN("Login","Sign in"),
+	REGISTER_LOGIN("Login","Register"),
+	
 	PRACTICEQUESTIONS_ALLSUBMODULES("AllSubModules","Practice Questions"),
 	TRYHERE_ALLSUBMODULES("AllSubModules","Try here>>>"),
 
