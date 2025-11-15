@@ -62,9 +62,31 @@ import utilities.ExcelReader;
     public static Object[][] getDataStructureData() {
         return loadTestData("Sheet12");
     }    
-    @DataProvider(name = "runHomeData")
-    public Object[][] getSearchHomeData() {
-        return new Object[][] {
+    
+    //@DataProvider(name = "runHomeData")
+    //public Object[][] getSearchHomeData() {
+
+    @DataProvider(name = "excelDataInValidLinkedListOptions")
+    public static Object[][] getLinkedlistOptionInValidData() {
+        return loadTestData("Sheet7");
+    }
+    
+    @DataProvider(name = "excelDataValidLinkedListOptions")
+    public static Object[][] getLinkedlistOptionValidData() {
+        return loadTestData("Sheet8");
+    }
+    
+    @DataProvider(name = "excelDataInValidStackOptions")
+    public static Object[][] getStackOptionInValidData() {
+        return loadTestData("Sheet9");
+    }
+    @DataProvider(name = "excelDataValidStackOptions")
+    public static Object[][] getStackOptionValidData() {
+        return loadTestData("Sheet10");
+    }
+    @DataProvider(name = "runArrayData")
+    public Object[][] getSearchArrayData() {
+    return new Object[][] {
             { "print('Hello QATitans!')", "Hello QATitans!" }
         };
     }

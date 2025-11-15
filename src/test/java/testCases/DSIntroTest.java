@@ -44,13 +44,13 @@ public class DSIntroTest extends Hooks {
 		logger.info("user navigated to home page");
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 7)
 	public void TestUserNavigateToHomePage() {
 		background.verifyHomePageIsDisplayed();
 		logger.info("user navigated to home page");
 	}
 	
-	@Test(priority = 2)
+	@Test(priority = 8)
 	public void userClicksGetStartedButtonOnDataStructurePanel() {
 		homepage.clickGetStartedButtonHomePageDSIntroModule();
 		String expectedMessage = CommonUtils.NOT_SIGNED_IN_MESSAGE;
