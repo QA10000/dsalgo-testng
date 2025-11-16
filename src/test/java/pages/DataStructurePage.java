@@ -123,7 +123,7 @@ public class DataStructurePage {
 	}
 
     public void clickTimeComplexity() {
-        acts.moveToElement(timeComplexityButton).perform();
+        //acts.moveToElement(timeComplexityButton).perform();
         timeComplexityButton.click();
         title = driver.getTitle();
     }
@@ -184,7 +184,7 @@ public class DataStructurePage {
 	}
 
     public boolean codeTextAreaDisplayed() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));
         wait.until(ExpectedConditions.visibilityOf(codeMirrorEditor));
         logger.info("codeTextAreaDisplayed() | " + codeMirrorEditor.isDisplayed());
         return codeMirrorEditor.isDisplayed();

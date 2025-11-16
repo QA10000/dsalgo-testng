@@ -9,6 +9,8 @@
 		<parameter name="browser" value="chrome" />
 
 		<classes>
+			<class name="testCases.ArrayTest" />
+			<class name="testCases.DSIntroTest" />
 			<class name="testCases.HomeTest" />
 			<class name="testCases.DSIntroTest" />
 		</classes>

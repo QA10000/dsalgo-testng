@@ -42,9 +42,8 @@ public enum PageLinks{
 	THREE_HOME("Home","Applications"),
 	
 	//DSINTRO Module
-	ONE_DSINTRO("DSIntro","Operations in DSIntro"),
-	TWO_DSINTRO("Intro","Implementation"),
-	THREE_DSINTRO("Intro","Applications"),	
+	TIMECOMPLEXITY_DSNTRO("DSIntro","Time Complexity"),
+	//PRACTICE_QUESTIONS_DSNTRO("DSIntro","Practice Questions"),
 	 
 	//Array module for now
 	TIMECOMPLEXITY_ARRAYS("Array","Time Complexity"),

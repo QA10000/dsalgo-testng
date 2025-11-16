@@ -29,6 +29,7 @@ public class DSIntroTest extends Hooks {
 		}
 		background = new Background(driver);
 		homepage = new HomePage(driver);
+		dspage = new DataStructurePage(driver);
 		background.launchUrl();
 		background.clickGetStarted();
 		String actualTitle = homepage.getTitle();
@@ -54,7 +55,7 @@ public class DSIntroTest extends Hooks {
 	    Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Warning message mismatch!");
 	}
 	
-	@Test(priority = 9)
+	@Test(priority = 3)
 	public void userSeesDropdownOnTopLeftCorner() {
 		String actualLabel = homepage.getDataStructureLblText();
 		String expectedLabel = CommonUtils.DS_DROP_DOWN_LABEL;
@@ -62,7 +63,7 @@ public class DSIntroTest extends Hooks {
 		Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
 	}
 	
-	@Test(priority = 10)
+	@Test(priority = 4)
 	public void userSeesNumpyNinja() {
 		String actualLabel = homepage.getNumpyNinjaLinkText();
 		String expectedLabel = CommonUtils.NUMPY_NINJA_LABEL;
@@ -70,7 +71,7 @@ public class DSIntroTest extends Hooks {
 		Assert.assertEquals(actualLabel, expectedLabel, "NumpyNinja Label mismatch!");
 	}	
 
-	@Test(priority = 11)
+	@Test(priority = 5)
 	public void checkRegisterLinkText() {
 		String actualLabel = homepage.getRegisterLinkText();
 		String regLinkLabel = CommonUtils.REGISTER_LINK_TEXT;
@@ -78,11 +79,56 @@ public class DSIntroTest extends Hooks {
 		Assert.assertEquals(actualLabel, regLinkLabel, "Reg. Link Text mismatch!");
 	}
 
-	@Test(priority = 12)
+	@Test(priority = 6)
 	public void checkSignInLinkText() {
 		String actualLinkText = homepage.getSigninLinkText();
 		String expectedSigninLinkLabel = CommonUtils.SIGNIN_LINK_TEXT;
 		logger.info("Verifying that the user sees Signin Link");
 		Assert.assertEquals(actualLinkText, expectedSigninLinkLabel, "Sign-In. Link Text mismatch!");
 	}
+	
+	@Test(priority = 7)
+	public void timeComplexity() {
+		background.userLoggedin();
+		dspage.clickDataStructuresGetStarted();
+		dspage.timeComplexityLabelDisplayed();
+		dspage.clickTimeComplexity();
+
+		String actualTitle = dspage.getTitle();
+		String expectedTitle = CommonUtils.TIME_COMPLEXITY_TITLE;
+		Assert.assertEquals(actualTitle, expectedTitle, "Time Complexity. Title Text mismatch!");		
+	}
+	
+	@Test(priority = 8)
+	public void tryInvalidPythonCodeExecution() {
+		background.userLoggedin();
+		dspage.clickDataStructuresGetStarted();
+		dspage.timeComplexityLabelDisplayed();
+		dspage.clickTimeComplexity();
+		dspage.clickTryHere();
+		Assert.assertTrue(dspage.codeTextAreaDisplayed(), "Code Textbox Shown!!!");
+		try {
+			dspage.invalidPythonCode("prin");
+		} catch (Exception ex) {
+            logger.error("Alert did not appear after running invalid code | ", ex);
+		}	
+	}
+	@Test(priority = 9)
+	public void tryValidPythonCodeExecution() {
+		String actualOP=null;
+		background.userLoggedin();
+		dspage.clickDataStructuresGetStarted();
+		dspage.timeComplexityLabelDisplayed();
+		dspage.clickTimeComplexity();
+		dspage.clickTryHere();
+		Assert.assertTrue(dspage.codeTextAreaDisplayed(), "Code Textbox Shown!!!");
+		try {
+			dspage.getPythonCode("print \"Hello\" ");
+			actualOP = dspage.getPythonCodeExcMsg();
+		} catch (Exception ex) {
+            logger.error("Alert did not appear after running valid code | ", ex);
+		}
+		Assert.assertEquals(actualOP, "Hello", "Python code execution. Output mismatch!");
+		dspage.getPythonCodeExcMsg();
+	}	
 }
