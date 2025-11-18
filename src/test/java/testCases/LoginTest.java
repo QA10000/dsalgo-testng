@@ -15,8 +15,8 @@ import dataproviders.ExcelDataProvider;
 import driverfactory.DriverManager;
 import pages.Background;
 import pages.LoginPage;
-import utilities.enumClass.Module;
-import utilities.enumClass.PageLinks;
+import utilities.Module;
+import utilities.PageLinks;
 
 
 public class LoginTest extends Hooks{
@@ -85,7 +85,7 @@ public class LoginTest extends Hooks{
 	@Test(priority = 6)
 	 void testNumpyNinjaLabel() {
 		//String expectedLabel = "NumpyNinja";
-		String expectedlabel= PageLinks.NUMPYNINJA_LOGIN.getLinkText();
+		String expectedlabel= PageLinks.NUMPYNINJA_COMMON.getLinkText();
 		String actualLabel = loginpage.getNumpyNinjaLinkText();
         Assert.assertEquals(actualLabel, expectedlabel, "Label mismatch!");
 	}
@@ -101,7 +101,7 @@ public class LoginTest extends Hooks{
 	@Test(priority = 8)
 	 void testDataStructuresLabel() {
 		//String expectedLabel = "Data Structures";
-	  String expectedLabel =PageLinks.DATASTRUCTURES_LOGIN.getLinkText();
+	   String expectedLabel =PageLinks.DATASTRUCTURES_COMMON.getLinkText();
 	    String actualLabel = loginpage.getDataStructureDropdownText();
         Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
 	}

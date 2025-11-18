@@ -7,7 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import dataproviders.ExcelDataProvider;
+import utilities.ExcelDataProvider;
+import utilities.PageLinks;
 import driverfactory.DriverManager;
 import pages.ArrayPage;
 import pages.Background;
@@ -17,7 +18,7 @@ public class ArrayTest extends Hooks {
 	private Background background;
 	private ArrayPage arraypage;
 	private RegisterPage registerpage;
-	private static final Logger logger = LogManager.getLogger(RegistrationTest.class);
+	private static final Logger logger = LogManager.getLogger(ArrayTest.class);
 
 	@BeforeMethod
 	public void setUp() {
@@ -32,7 +33,7 @@ public class ArrayTest extends Hooks {
 		registerpage = new RegisterPage(driver);
 		background.launchUrl();
 		background.clickGetStarted();
-		String actualTitle = registerpage.getTitle();
+		String actualTitle = arraypage.getTitle();
 		String expectedTitle = "NumpyNinja";
 		logger.info("Verifying that the user lands on the Registration page");
 		Assert.assertNotNull(actualTitle, "Title was null - possible page load failure?");
@@ -88,6 +89,7 @@ public class ArrayTest extends Hooks {
 		Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Alert message mismatch!");
 	}
 
+
 	@Test(priority = 4, dataProvider = "runArrayData", dataProviderClass = ExcelDataProvider.class)
 	public void testpracticeCode(String code, String expectedResult) {
 		arraypage.practicQuestionValidScn();
@@ -99,7 +101,7 @@ public class ArrayTest extends Hooks {
 	@Test(priority = 5) 
 	public void testLogoDisplay() {
 		String actualLabel = arraypage.getNumpyNinjaLinkText();
-		String expectedLabel = "NumpyNinja";
+		String expectedLabel = PageLinks.NUMPYNINJA_COMMON.getLinkText();
 		logger.info("Verifying that the user sees NumpaiNinja logo");
 		Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
 	}
@@ -107,7 +109,8 @@ public class ArrayTest extends Hooks {
 	@Test(priority = 6) 
 	public void testDataSrtucureDisplay() {
 		String actualLabel = arraypage.getDataStructureLblText();
-		String expectedLabel = "Data Structures";
+		//String expectedLabel = "Data Structures";
+		String expectedLabel = PageLinks.DATASTRUCTURES_COMMON.getLinkText();
 		logger.info("Verifying that the user sees label for  Data Structure dropdown");
 		Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
 	}
@@ -115,7 +118,7 @@ public class ArrayTest extends Hooks {
 	@Test(priority = 7) 
 	public void testSignoutBtnDisplay() {
 		String actualLabel = arraypage.getSignoutLblText();
-		String expectedLabel = "Sign out";
+		String expectedLabel = PageLinks.SIGNOUT_COMMON.getLinkText();
 		logger.info("Verifying that the user sees label for  Data Structure dropdown");
 		Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
 	}
@@ -123,7 +126,7 @@ public class ArrayTest extends Hooks {
 	@Test(priority = 8) 
 	public void testUserNameDisplay() {
 		String actualLabel = arraypage.getUsernameLblText();
-		String expectedLabel = "Qatitans1";
+		String expectedLabel =PageLinks.USERNAME.getLinkText();
 		logger.info("Verifying that the user sees label for  Data Structure dropdown");
 		Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
 	}

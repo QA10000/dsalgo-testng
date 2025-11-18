@@ -3,25 +3,13 @@
 <suite name="RunTest" parallel="tests" thread-count="3">
 	<listeners>
 		<listener class-name="io.qameta.allure.testng.AllureTestNg" />
+	   <listener class-name="utilities.RetryListener" />
+	   <listener class-name="utilities.TestListener"/>
+
+
 	</listeners>
 
-	<!--
-		<test name="ChromeTest">
-		<parameter name="browser" value="chrome" />
-
-		<classes>
-			<class name="testCases.ArrayTest" />
-			<class name="testCases.DSIntroTest" />
-			<class name="testCases.HomeTest" />
-			<class name="testCases.DSIntroTest" />
-			<class name="testCases.LinkedListTest" />
-			<class name="testCases.LoginTest" />
-			<class name="testCases.RegistrationTest" />
-			<class name="testCases.StackTest" />
-			<class name="testCases.TreeTest" />			
-		</classes>
-	</!test>
-	-->
+	
 	<test name="FirefoxTest_Registration">
 		<parameter name="browser" value="firefox" />
 
@@ -30,22 +18,21 @@
 		</classes>
 	</test>
 	<test name="EdgeTest_Registration">
-		<parameter name="browser" value="edge" />
+		<parameter name="browser" value="firefox" />
 
 		<classes>
 			<class name="testCases.RegistrationTest" />
 		</classes>
 	</test>
-
-    <test name="FirefoxTest_Login">
+  <test name="FirefoxTest_Login">
 		<parameter name="browser" value="firefox" />
 
 		<classes>
 			<class name="testCases.LoginTest" />
 		</classes>
 	</test>
-	<test name="EdgeTest_Login">
-		<parameter name="browser" value="edge" />
+	<test name="ChromeTest_Login">
+		<parameter name="browser" value="chrome" />
 
 		<classes>
 			<class name="testCases.LoginTest" />
@@ -59,12 +46,13 @@
 			<class name="testCases.StackTest" />
 		</classes>
 	</test>
-	<test name="EdgeTest_Stack">
-		<parameter name="browser" value="edge" />
+	<test name="ChromeTest_Stack">
+		<parameter name="browser" value="chrome" />
 
 		<classes>
 			<class name="testCases.StackTest" />
 		</classes>
 	</test>
+  
 	
  </suite>

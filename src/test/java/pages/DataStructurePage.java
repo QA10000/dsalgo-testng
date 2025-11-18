@@ -71,6 +71,9 @@ public class DataStructurePage {
 
     @FindBy(css = "div.CodeMirror")
     WebElement codeMirrorEditor;
+    
+    @FindBy(xpath = "//div[@role='alert']")
+	WebElement errorMessage;
 
     Actions acts;
 
@@ -96,6 +99,13 @@ public class DataStructurePage {
     public void Login() {
         driver.get(loginPageURL);
     }
+    
+	public String getErrorMessage() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		wait.until(ExpectedConditions.visibilityOf(errorMessage));
+		String ErrMsg = errorMessage.getText();
+		return ErrMsg;
+	}
 
     public void CorrectUsernameAndPassword(String uid, String pwd) {
         Username.sendKeys(uid);

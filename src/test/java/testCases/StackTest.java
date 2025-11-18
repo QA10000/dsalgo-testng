@@ -15,8 +15,8 @@ import driverfactory.DriverManager;
 import pages.Background;
 import pages.StackPage;
 import pages.TryEditorPage;
-import utilities.enumClass.PageLinks;
-import utilities.enumClass.Module;
+import utilities.PageLinks;
+import utilities.Module;
 
 
 

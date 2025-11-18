@@ -11,6 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class ArrayPage {
 	@FindBy(xpath = "//a[@href='array']")
@@ -140,6 +141,8 @@ public class ArrayPage {
 		runBtn.click();
 
 	}
+	
+	
 
 	public String getAlertMessageAndAccept() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -211,5 +214,10 @@ public class ArrayPage {
 		wait.until(ExpectedConditions.elementToBeClickable(dataStructuresDropdown));
 		return dataStructuresDropdown.getText();
 	}
-	
+
+
+	public String getTitle() {
+	    return driver.getTitle();
+	}
+
 }

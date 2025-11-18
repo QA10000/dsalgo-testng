@@ -1,4 +1,4 @@
-package utilities.enumClass;
+package utilities;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,17 +11,18 @@ public enum PageLinks{
 	//Common
 	NUMPYNINJA_COMMON("Common","NumpyNinja"),
 	DATASTRUCTURES_COMMON("Common","Data Structures"),
-	//QATITANS1("Qatitans1"),
+	USERNAME("Common","Qatitans1"),
 	SIGNOUT_COMMON("Common","Sign out"),
-	
-	NUMPYNINJA_LOGIN("Login","NumpyNinja"),
-	DATASTRUCTURES_LOGIN("Login","Data Structures"),
 	SIGNIN_LOGIN("Login","Sign in"),
 	REGISTER_LOGIN("Login","Register"),
 	LOGGEDOUT_LOGIN("Login","Logged out successfully"),
-	
 	PRACTICEQUESTIONS_ALLSUBMODULES("AllSubModules","Practice Questions"),
 	TRYHERE_ALLSUBMODULES("AllSubModules","Try here>>>"),
+	LOGIN_PAGE_URL("URL", "https://dsportalapp.herokuapp.com/login"),
+    HOME_PAGE_URL("URL", "https://dsportalapp.herokuapp.com/home"),
+    DATA_STRUCTURE_PAGE_URL("URL", "https://dsportalapp.herokuapp.com/data-structures-introduction"),
+    TRY_EDITOR_PAGE_URL("URL", "https://dsportalapp.herokuapp.com/try-editor"),
+    DATA_STRUCTURE_PAGE_TIME_COMPLEXITY("URL","https://dsportalapp.herokuapp.com/data-structures-introduction/time-complexity/" ),
 
 	//LinkedList Module
 	INTRODUCTION_LINKEDLIST("LinkedList","Introduction"),
@@ -31,11 +32,7 @@ public enum PageLinks{
 	TRAVERSAL_LINKEDLIST("LinkedList","Traversal"),
 	INSERTION_LINKEDLIST("LinkedList","Insertion"),
 	DELETION_LINKEDLIST("LinkedList","Deletion"),
-	
-   //LinkedList Header
-	TOPICSCOVERED_LINKEDLIST("LinkedList","Topics Covered"),
-	LINKEDLIST_LINKEDLIST("LinkedList"	,"Linked List"),
-	
+
 	//Stack Module
 	OPERATIONSINSTACK_STACK("Stack","Operations in Stack"),
 	IMPLEMENTATION_STACK("Stack","Implementation"),
@@ -45,36 +42,13 @@ public enum PageLinks{
 	ONE_HOME("Home","Operations in Home"),
 	TWO_HOME("Home","Implementation"),
 	THREE_HOME("Home","Applications"),
-	
-	//DSINTRO Module
-	TIMECOMPLEXITY_DSNTRO("DSIntro","Time Complexity"),
-	//PRACTICE_QUESTIONS_DSNTRO("DSIntro","Practice Questions"),
+	ERROR_MSG("Home","You are not logged in"),
+    HOME_PAGE_TITLE("Title","NumpyNinja"),
+    
+    //DataStructure
+	TIMECOMPLEXITY_DSINTRO("DSIntro","Time Complexity");
 	 
-	//Array module for now
-	TIMECOMPLEXITY_ARRAYS("Array","Time Complexity"),
-	ARRAYSINPYTHON_ARRAYS("Array","Arrays in Python"),
-	ARRAYSUSINGLIST_ARRAYS("Array","Arrays Using List"),
-	BASICOPERATIONSINLISTS_ARRAYS("Array","Basic Operations in Lists"),
-	APPLICATIONSOFARRAY_ARRAYS("Array","Applications of Array"), 
-	IMPLEMENTATIONOFQUEUEINPYTHON_ARRAYS("Array","Implementation of Queue in Python"),
-	IMPLEMENTATIONUSINGCOLLECTIONSDEQUES_ARRAYS("Array","Implementation using collections.deque"),
-	IMPLEMENTATIONUSINGARRAY_ARRAYS("Array","Implementation using array"),
-	QUEUEOPERATIONS_ARRAYS("Array","Queue Operations"),
-	OVERVIEWOFTREES_ARRAYS("Array","Overview of Trees"),
-	TERMINOLOGIES_ARRAYS("Array","Terminologies"),
-	TYPESOFTREES_ARRAYS("Array","Types of Trees"),
-	TREETRAVERSAL_ARRAYS("Array","Tree Traversals"),
-	TRAVERSALSILLUSTRATION_ARRAYS("Array","Traversals-Illustration"),
-	BINARYTREES_ARRAYS("Array","Binary Trees"),
-	TYPESOFBINARYTREES_ARRAYS("Array","Types of Binary Trees"),
-	IMPLENTATIONINPYTHON_ARRAYS("Array","Implementation in Python"),
-	BINARYTREETRAVERSALS_ARRAYS("Array","Binary Tree Traversals"),
-	IMPLEMENTATIONOFBINARYTREES_ARRAYS("Array","Implementation of Binary Trees"),
-	APPLICATIONSOFBINARYTREES_ARRAYS("Array","Applications of Binary trees"),
-	BINARYSEARCHTREES_ARRAYS("Array","Binary Search Trees"),
-	IMPLEMENTATIONOFBST_ARRAYS("Array","Implementation Of BST"),
-	GRAPH_ARRAYS("Array","Graph"),
-	GRAPHREPRESTATIONS_ARRAYS("Array","Graph Representations");
+	
 
 	private final String module;
 	private final String linkText; 
