@@ -83,4 +83,14 @@ public class LinkedListTest extends Hooks{
 	    Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Alert message mismatch");
 	}
 
+
+	@Test(priority = 4)
+	void testPageHeaderLinks() {
+		//linkedlistpage.clicklinkedListGetStarted();
+		List<String> expectedLinks =  PageLinks.getLinksForModules(Module.LINKEDLIST_HEADER);
+		List<String> actualLinks = linkedlistpage.getAllPageHeaderTexts();
+		logger.info("LinkedLIst::actualLinks: " + actualLinks.toString());
+		List<String> missing = linkedlistpage.verifyAllExpectedLinksArePresent(expectedLinks, actualLinks);
+		Assert.assertTrue(missing.isEmpty(),"These expected links were missing: " + missing + "\nActual list: " + actualLinks);
+	}
 }

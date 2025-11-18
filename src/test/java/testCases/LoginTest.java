@@ -84,7 +84,6 @@ public class LoginTest extends Hooks{
 	
 	@Test(priority = 6)
 	 void testNumpyNinjaLabel() {
-		//String expectedLabel = "NumpyNinja";
 		String expectedlabel= PageLinks.NUMPYNINJA_COMMON.getLinkText();
 		String actualLabel = loginpage.getNumpyNinjaLinkText();
         Assert.assertEquals(actualLabel, expectedlabel, "Label mismatch!");
@@ -92,7 +91,6 @@ public class LoginTest extends Hooks{
 	
 	@Test(priority = 7)
 	 void testRegisterLink() {
-		//String expectedLabel = "Register";
 		String expectedlabel= PageLinks.REGISTER_LOGIN.getLinkText();
 		String actualLabel = loginpage.getRegisterLinkText();
         Assert.assertEquals(actualLabel, expectedlabel, "Label mismatch!");
@@ -100,7 +98,6 @@ public class LoginTest extends Hooks{
 	
 	@Test(priority = 8)
 	 void testDataStructuresLabel() {
-		//String expectedLabel = "Data Structures";
 	   String expectedLabel =PageLinks.DATASTRUCTURES_COMMON.getLinkText();
 	    String actualLabel = loginpage.getDataStructureDropdownText();
         Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
@@ -108,12 +105,11 @@ public class LoginTest extends Hooks{
 	
 	@Test(priority = 9)
 	public void testLoginLinks() {
-		//stackpage.clickStackGetStarted();
-		//loginpage.clickImplementationLink();
-		List<String> expectedLinks = PageLinks.getLinksForModules(Module.LOGIN);
-		List<String> actualLinks = loginpage.getAllLinkTexts();
+		loginpage.clickLoginLink();
+		List<String > expectedLinks = PageLinks.getLinksForModules(Module.LOGIN);
+	    List<String> actualLinks = loginpage.getAllLinkTextsLogin();
 		logger.info("LoginTest::actualLinks: " + actualLinks.toString());
 		List<String> missing = loginpage.verifyAllExpectedLinksArePresent(expectedLinks, actualLinks);
-		Assert.assertTrue(missing.isEmpty(),"These expected links were missing: " + missing + "\nActual list: " + actualLinks);
+	Assert.assertTrue(missing.isEmpty(),"These expected links were missing: " + missing + "\nActual list: " + actualLinks);
 	}
 }

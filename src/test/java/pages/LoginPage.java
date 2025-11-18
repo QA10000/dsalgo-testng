@@ -56,7 +56,10 @@ public class LoginPage {
 	private WebElement logoutMessage;
 
 	@FindBy(xpath = "//a[@href and normalize-space(text()) != '']")
-	private List<WebElement> navigationLinks; //= new ArrayList<>();
+   private List<WebElement> navigationLinks; //= new ArrayList<>();
+	
+	@FindBy(xpath = "//div[@id='navbarCollapse']//a[normalize-space(text()) != '']")
+	private List<WebElement> navigationLinksLogin;
 	
 	private static final Logger logger = LogManager.getLogger(LoginPage.class);
 	
@@ -245,6 +248,12 @@ public class LoginPage {
 		}
 		return missing;
 	}
+	
+	public List<String> getAllLinkTextsLogin() {
+		return navigationLinks.stream()
+                .map(link -> link.getText().trim()) 
+                .collect(Collectors.toList());
+    }
 	
 	
 	
