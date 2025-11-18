@@ -5,7 +5,8 @@
 		<listener class-name="io.qameta.allure.testng.AllureTestNg" />
 	</listeners>
 
-	<test name="ChromeTest">
+	<!--
+		<test name="ChromeTest">
 		<parameter name="browser" value="chrome" />
 
 		<classes>
@@ -19,20 +20,51 @@
 			<class name="testCases.StackTest" />
 			<class name="testCases.TreeTest" />			
 		</classes>
-	</test>
-	<!--  test name="FirefoxTest">
+	</!test>
+	-->
+	<test name="FirefoxTest_Registration">
 		<parameter name="browser" value="firefox" />
 
 		<classes>
 			<class name="testCases.RegistrationTest" />
 		</classes>
 	</test>
-	<test name="EdgeTest">
+	<test name="EdgeTest_Registration">
 		<parameter name="browser" value="edge" />
 
 		<classes>
 			<class name="testCases.RegistrationTest" />
 		</classes>
-	</test-->
-</suite>
- 
+	</test>
+
+    <test name="FirefoxTest_Login">
+		<parameter name="browser" value="firefox" />
+
+		<classes>
+			<class name="testCases.LoginTest" />
+		</classes>
+	</test>
+	<test name="EdgeTest_Login">
+		<parameter name="browser" value="edge" />
+
+		<classes>
+			<class name="testCases.LoginTest" />
+		</classes>
+	</test>
+	
+    <test name="FirefoxTest_Stack">
+		<parameter name="browser" value="firefox" />
+
+		<classes>
+			<class name="testCases.StackTest" />
+		</classes>
+	</test>
+	<test name="EdgeTest_Stack">
+		<parameter name="browser" value="edge" />
+
+		<classes>
+			<class name="testCases.StackTest" />
+		</classes>
+	</test>
+	
+ </suite>

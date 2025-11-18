@@ -66,12 +66,7 @@ public class LoginPage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public String getErrorMessage() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.visibilityOf(errorMessage));
-		String ErrMsg = errorMessage.getText();
-		return ErrMsg;
-	}
+	
 	
 	public String getNumpyNinjaLinkText() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -173,9 +168,9 @@ public class LoginPage {
 	        if (!isUsernameEmpty && !isPasswordEmpty && "N".equalsIgnoreCase(isDataValid)) {
 	        	// Get error message (if any)
 		        String errorMessage = getErrorMessage();
-	            // Expect error message for invalid credentials
-	            Assert.assertTrue(
-	                errorMessage.contains("Invalid Username and Password"),
+		        
+		                    // Expect error message for invalid credentials
+	            Assert.assertTrue(errorMessage.contains("Invalid Username and Password"),
 	                "Expected error message for invalid credentials not found." );
 	        }
 

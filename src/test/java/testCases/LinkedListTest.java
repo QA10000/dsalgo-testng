@@ -49,10 +49,20 @@ public class LinkedListTest extends Hooks{
 		//linkedlistpage.clicklinkedListGetStarted();
 		List<String> expectedLinks = PageLinks.getLinksForModules(Module.COMMON, Module.LINKEDLIST);
 		List<String> actualLinks = linkedlistpage.getAllLinkTexts();
-		logger.info("StackTest::actualLinks: " + actualLinks.toString());
+		logger.info("LinkedList::actualLinks: " + actualLinks.toString());
 		List<String> missing = linkedlistpage.verifyAllExpectedLinksArePresent(expectedLinks, actualLinks);
 		Assert.assertTrue(missing.isEmpty(),"These expected links were missing: " + missing + "\nActual list: " + actualLinks);
 	}
+	
+	/*@Test(priority = 4)
+	void testPageHeaderLinks() {
+		//linkedlistpage.clicklinkedListGetStarted();
+		List<String> expectedLinks = PageLinks.getAllPageHeaderTexts();
+		List<String> actualLinks = linkedlistpage.getAllLinkTexts();
+		logger.info("StackTest::actualLinks: " + actualLinks.toString());
+		List<String> missing = linkedlistpage.verifyAllExpectedLinksArePresent(expectedLinks, actualLinks);
+		Assert.assertTrue(missing.isEmpty(),"These expected links were missing: " + missing + "\nActual list: " + actualLinks);
+	}*/
 	
 	@Test(priority = 2, dataProvider = "excelDataInValidLinkedListOptions", dataProviderClass = ExcelDataProvider.class)
 	public void testInvalidCodeinTryEditor(Map<String, String> data) {
