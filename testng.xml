@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="RunTest" parallel="classes" thread-count="8">
+<suite name="RunTest" parallel="tests" thread-count="2">
 	<listeners>
 		<listener class-name="io.qameta.allure.testng.AllureTestNg" />
 	   <listener class-name="utilities.RetryListener" />
@@ -65,10 +65,19 @@
         <class name="testCases.TreeTest" />
         <class name="testCases.HomeTest" />
         <class name="testCases.DSIntroTest" />
-
-
-
-
+    </classes>
+</test>
+<test name="AllTestsFirefox" >
+    <parameter name="browser" value="firefox" />
+    <classes>
+        <class name="testCases.LoginTest" />
+        <class name="testCases.RegistrationTest" />
+        <class name="testCases.StackTest" />
+        <class name="testCases.LinkedListTest" />
+        <class name="testCases.ArrayTest" />
+        <class name="testCases.TreeTest" />
+        <class name="testCases.HomeTest" />
+        <class name="testCases.DSIntroTest" />
     </classes>
 </test>
 	
