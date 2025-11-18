@@ -1,3 +1,5 @@
+
+
 package testCases;
 
 import org.apache.logging.log4j.LogManager;
@@ -6,11 +8,10 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import dataproviders.ExcelDataProvider;
 import driverfactory.DriverManager;
 import pages.HomePage;
 import pages.Background;
-import utilities.CommonUtils;
+import utilities.PageLinks;
 
 public class HomeTest extends Hooks {  
 	private Background background;
@@ -40,14 +41,16 @@ public class HomeTest extends Hooks {
 
 	@Test(priority = 1)
 	public void TestUserNavigateToHomePage() {
-		background.verifyHomePageIsDisplayed();
+	String expectedTitle = PageLinks.HOME_PAGE_TITLE.getLinkText();
+		String actualTitle = homepage.getTitle();
+		Assert.assertEquals(actualTitle, expectedTitle, "Title mismatch!");
 		logger.info("user navigated to home page");
 	}
 	
 	@Test(priority = 2)
 	public void userClicksGetStartedButtonOnDataStructurePanel() {
 		homepage.clickGetStartedButtonHomePageDSIntroModule();
-		String expectedMessage = CommonUtils.NOT_SIGNED_IN_MESSAGE;
+		String expectedMessage = PageLinks.ERROR_MSG.getLinkText();
 		String actualMessage = homepage.getnotlogedMessage();
 		logger.info("DataStructurePanel: The user should able to see a warning message : "+actualMessage+" || Expected Message : "+expectedMessage);
 	    Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Warning message mismatch!");
@@ -56,7 +59,7 @@ public class HomeTest extends Hooks {
 	@Test(priority = 3)
 	public void userClicksGetStartedButtonOnArrayPanel() {
 		homepage.clickGetStartedButtonHomePageArrayModule();
-		String expectedMessage = CommonUtils.NOT_SIGNED_IN_MESSAGE;
+		String expectedMessage = PageLinks.ERROR_MSG.getLinkText();
 		String actualMessage = homepage.getnotlogedMessage();
 		logger.info("ArrayPanel: The user should able to see a warning message : "+actualMessage+" || Expected Message : "+expectedMessage);
 	    Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Warning message mismatch!");	
@@ -65,7 +68,7 @@ public class HomeTest extends Hooks {
 	@Test(priority = 4)
 	public void userClicksGetStartedButtonOnStackPanel() {
 		homepage.clickGetStartedButtonHomePageStackModule();
-		String expectedMessage = CommonUtils.NOT_SIGNED_IN_MESSAGE;
+		String expectedMessage = PageLinks.ERROR_MSG.getLinkText();
 		String actualMessage = homepage.getnotlogedMessage();
 		logger.info("StackPanel: The user should able to see a warning message : "+actualMessage+" || Expected Message : "+expectedMessage);
 	    Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Warning message mismatch!");
@@ -74,7 +77,8 @@ public class HomeTest extends Hooks {
 	@Test(priority = 5)
 	public void userClicksGetStartedButtonOnLinkedListPanel() {
 		homepage.clickGetStartedButtonHomePageLinkedListModule();
-		String expectedMessage = CommonUtils.NOT_SIGNED_IN_MESSAGE;
+		//String expectedMessage = CommonUtils.NOT_SIGNED_IN_MESSAGE;
+		String expectedMessage = PageLinks.ERROR_MSG.getLinkText();
 		String actualMessage = homepage.getnotlogedMessage();
 		logger.info("LinkedListPanel: The user should able to see a warning message : "+actualMessage+" || Expected Message : "+expectedMessage);
 	    Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Warning message mismatch!");	
@@ -83,7 +87,8 @@ public class HomeTest extends Hooks {
 	@Test(priority = 6)	
 	public void userClicksGetStartedButtonOnQueuePanel() {
 		homepage.clickGetStartedButtonHomePageQueueModule();
-		String expectedMessage = CommonUtils.NOT_SIGNED_IN_MESSAGE;
+	//	String expectedMessage = CommonUtils.NOT_SIGNED_IN_MESSAGE;
+	    String expectedMessage = PageLinks.ERROR_MSG.getLinkText();
 		String actualMessage = homepage.getnotlogedMessage();
 		logger.info("QueuePanel: The user should able to see a warning message : "+actualMessage+" || Expected Message : "+expectedMessage);
 	    Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Warning message mismatch!");	
@@ -92,7 +97,7 @@ public class HomeTest extends Hooks {
 	@Test(priority = 7)
 	public void userClicksGetStartedButtonOnTreePanel() {
 		homepage.clickGetStartedButtonHomePageTreeModule();    
-		String expectedMessage = CommonUtils.NOT_SIGNED_IN_MESSAGE;
+		String expectedMessage = PageLinks.ERROR_MSG.getLinkText();
 		String actualMessage = homepage.getnotlogedMessage();
 		logger.info("TreePanel: The user should able to see a warning message : "+actualMessage+" || Expected Message : "+expectedMessage);
 	    Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Warning message mismatch!");
@@ -101,7 +106,7 @@ public class HomeTest extends Hooks {
 	@Test(priority = 8)
 	public void userClicksGetStartedButtonOnGraphPanel() {
 		homepage.clickGetStartedButtonHomePageGraphModule();
-		String expectedMessage = CommonUtils.NOT_SIGNED_IN_MESSAGE;
+		String expectedMessage = PageLinks.ERROR_MSG.getLinkText();
 		String actualMessage = homepage.getnotlogedMessage();
 		logger.info("GraphPanel: The user should able to see a warning message : "+actualMessage+" || Expected Message : "+expectedMessage);
 	    Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Warning message mismatch!");
@@ -110,7 +115,7 @@ public class HomeTest extends Hooks {
 	@Test(priority = 9)
 	public void userSeesDropdownOnTopLeftCorner() {
 		String actualLabel = homepage.getDataStructureLblText();
-		String expectedLabel = CommonUtils.DS_DROP_DOWN_LABEL;
+		String expectedLabel = PageLinks.DATASTRUCTURES_COMMON.getLinkText();
 		logger.info("DropdownOnTopLeftCorner: Verifying that the user sees label for Data Structure dropdown | expectedLabel | "+expectedLabel+" | actualLabel | "+actualLabel);
 		Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
 	}
@@ -118,7 +123,7 @@ public class HomeTest extends Hooks {
 	@Test(priority = 10)
 	public void userSeesNumpyNinja() {
 		String actualLabel = homepage.getNumpyNinjaLinkText();
-		String expectedLabel = CommonUtils.NUMPY_NINJA_LABEL;
+		String expectedLabel =PageLinks.NUMPYNINJA_COMMON.getLinkText(); 
 		logger.info("Verifying that the user sees label for NumpyNinja label | expectedLabel | "+expectedLabel+" | actualLabel | "+actualLabel);
 		Assert.assertEquals(actualLabel, expectedLabel, "NumpyNinja Label mismatch!");
 	}	
@@ -126,7 +131,7 @@ public class HomeTest extends Hooks {
 	@Test(priority = 11)
 	public void checkRegisterLinkText() {
 		String actualLabel = homepage.getRegisterLinkText();
-		String regLinkLabel = CommonUtils.REGISTER_LINK_TEXT;
+		String regLinkLabel =PageLinks.REGISTER_LOGIN.getLinkText();
 		logger.info("Verifying that the user sees Register link");
 		Assert.assertEquals(actualLabel, regLinkLabel, "Reg. Link Text mismatch!");
 	}
@@ -134,7 +139,7 @@ public class HomeTest extends Hooks {
 	@Test(priority = 12)
 	public void checkSignInLinkText() {
 		String actualLinkText = homepage.getSigninLinkText();
-		String expectedSigninLinkLabel = CommonUtils.SIGNIN_LINK_TEXT;
+		String expectedSigninLinkLabel = PageLinks.SIGNIN_LOGIN.getLinkText();
 		logger.info("Verifying that the user sees Signin Link");
 		Assert.assertEquals(actualLinkText, expectedSigninLinkLabel, "Sign-In. Link Text mismatch!");
 	}

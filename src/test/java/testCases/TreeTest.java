@@ -32,7 +32,6 @@ public class TreeTest extends Hooks {
 		registerpage = new RegisterPage(driver);
 		arraypage = new ArrayPage(driver);
 		treepage = new TreePage(driver);
-
 		background.launchUrl();
 		background.clickGetStarted();
 		String actualTitle = registerpage.getTitle();
@@ -62,14 +61,7 @@ public class TreeTest extends Hooks {
 		String optionOnTree = data.get("OptionOnTree");
 		String code = data.get("code");
 		String expectedMessage = data.get("errorMessage");
-		//arraypage.clickStartBtn();
-		treepage.clickTreeStrtBtn();
-		Thread.sleep(3000); 
-		//arraypage.clickArraySection(optionOnArray);
-		treepage.clickTreeOptiions(optionOnTree);
-		treepage.clickTryMeButton();
-		treepage.codeEditorSendKeys(code);
-		treepage.clickRunBtn();
+		treepage.userEnterCode(optionOnTree, code);
 		String actualMessage = treepage.getAlertMessageAndAccept();
 		logger.info("Verifying that the user sees error message");
 		Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Alert message mismatch!");
@@ -81,16 +73,8 @@ public class TreeTest extends Hooks {
 		String optionOnTree= data.get("OptionOnTree");
 		String code = data.get("code");
 		String expectedMessage = data.get("message");
-		treepage.clickTreeStrtBtn();
-		Thread.sleep(3000); 
-		Assert.assertEquals(treepage.getTreePageTitle(), "Tree", "Not on Array page!");
-		treepage.clickTreeOptiions(optionOnTree);
-		treepage.clickTryMeButton();
-		treepage.codeEditorSendKeys(code);
-		treepage.clickRunBtn();
-		treepage.outputDisplayed();
-		// String actualMessage = treepage.getTreeTextoutput();
-		String actualMessage = "";
+		treepage.userEnterCode(optionOnTree, code);
+		String actualMessage = treepage.getTextoutput();
 		logger.info("Verifying that the user sees output message");
 		Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Alert message mismatch!");
 	}

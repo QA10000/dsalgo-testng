@@ -1,5 +1,0 @@
-package utilities.enumClass;
-
-public enum Module {
-	COMMON, ALLSUBMODULES, LOGIN, LINKEDLIST,LINKEDLIST_HEADER, STACK,STACK_HEADER, ARRAY, HOME, DSINTRO;
-}

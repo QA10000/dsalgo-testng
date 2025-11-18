@@ -1,10 +1,9 @@
-package dataproviders;
+package utilities;
 
 import java.util.List;
 import java.util.Map;
 
 import org.testng.annotations.DataProvider;
-import utilities.ExcelReader;
 
 
     public class ExcelDataProvider {
@@ -52,6 +51,19 @@ import utilities.ExcelReader;
         return loadTestData("Sheet6");
     }
     
+    @DataProvider(name = "excelDataHome")
+    public static Object[][] getHomeData() {
+        return loadTestData("Sheet11");
+    }
+    
+   
+    @DataProvider(name = "excelDataStructureData")
+    public static Object[][] getDataStructureData() {
+        return loadTestData("Sheet12");
+    }    
+    
+    //@DataProvider(name = "runHomeData")
+    //public Object[][] getSearchHomeData() {
 
     @DataProvider(name = "excelDataInValidLinkedListOptions")
     public static Object[][] getLinkedlistOptionInValidData() {
@@ -74,12 +86,12 @@ import utilities.ExcelReader;
     
     @DataProvider(name = "treeDataInValidOptions")
     public static Object[][] getTreeOptionInValidData() {
-        return loadTestData("Sheet11");
+        return loadTestData("Sheet13");
     }
     
     @DataProvider(name = "treeDataValidOptions")
     public static Object[][] getTreeOptionValidData() {
-        return loadTestData("Sheet12");
+        return loadTestData("Sheet14");
     }
     @DataProvider(name = "runArrayData")
     public Object[][] getSearchArrayData() {

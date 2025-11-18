@@ -39,11 +39,13 @@ public class RegisterPage {
 	private WebElement dataStructuresDropdown;
 	@FindBy(xpath = "//div[@id='navbarCollapse']//ul//a[contains(text(), 'Sign in')]")
 	private WebElement signinLink;
-	
+	@FindBy(xpath = "//a[normalize-space()='Sign out']")
+	private WebElement signoutLink;
 	String title;
+	@FindBy(xpath = "//a[normalize-space()='Qatitans1']")
+	private WebElement usernameLabel;
 	
-	//ScenarioContext scenariocontext;
-	
+		
 	public RegisterPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -107,26 +109,9 @@ public class RegisterPage {
 		enterConfirmPassword(confirmedPassword);
 		submitForm();
 		System.out.println("username" + username);
-	//	System.out.println("Setting username in context: " + username + " | Context: " + scenariocontext.hashCode());
-		//scenariocontext.set("registeredUsername", username);
 	}
 
-	public void enterInvalidData() {// 
-		//List<Map<String, String>> users = dataTable.asMaps(String.class, String.class); // are taking data from
-		// datatable in feature file
-		// then putting it in map then
-		// we are taking from map and
-		// then putting into form
-		/*for (Map<String, String> user : users) {// put hardcoded value for username
-			String username = user.get("username");
-			String password = user.get("password");
-			String confirmpassword = user.get("confirmpassword");
-			enterUsername(username);
-			enterPassword(password);
-			enterConfirmPassword(confirmpassword);
-			submitForm();
-		}*/
-	}
+	
 	
 	public void enterEmptyField(String username, String password, String confirmpassword) {
 		enterUsername(username);
@@ -173,12 +158,6 @@ public class RegisterPage {
 	
 	
 
-	/*public String getSuccessMessage() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".alert.alert-primary")));
-		return successMessage.getText().trim();
-	}*/
-	
 	public String getAlertMessage() {
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	    WebElement alert = wait.until(
@@ -234,6 +213,18 @@ public class RegisterPage {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(numpyNinjaLink));
 		return numpyNinjaLink.getText();
+	}
+	
+	public String getSignoutLblText() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(signoutLink));
+		return signoutLink.getText();
+	}
+	
+	public String getUsernameLblText() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(usernameLabel));
+		return  usernameLabel.getText();
 	}
 	
 	

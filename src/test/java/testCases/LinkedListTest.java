@@ -17,8 +17,8 @@ import pages.Background;
 import pages.LinkedListPage;
 
 import pages.TryEditorPage;
-import utilities.enumClass.Module;
-import utilities.enumClass.PageLinks;
+import utilities.Module;
+import utilities.PageLinks;
 
 public class LinkedListTest extends Hooks{
 	private LinkedListPage linkedlistpage;
@@ -54,16 +54,7 @@ public class LinkedListTest extends Hooks{
 		Assert.assertTrue(missing.isEmpty(),"These expected links were missing: " + missing + "\nActual list: " + actualLinks);
 	}
 	
-	/*@Test(priority = 4)
-	void testPageHeaderLinks() {
-		//linkedlistpage.clicklinkedListGetStarted();
-		List<String> expectedLinks = PageLinks.getAllPageHeaderTexts();
-		List<String> actualLinks = linkedlistpage.getAllLinkTexts();
-		logger.info("StackTest::actualLinks: " + actualLinks.toString());
-		List<String> missing = linkedlistpage.verifyAllExpectedLinksArePresent(expectedLinks, actualLinks);
-		Assert.assertTrue(missing.isEmpty(),"These expected links were missing: " + missing + "\nActual list: " + actualLinks);
-	}*/
-	
+
 	@Test(priority = 2, dataProvider = "excelDataInValidLinkedListOptions", dataProviderClass = ExcelDataProvider.class)
 	public void testInvalidCodeinTryEditor(Map<String, String> data) {
 		String OptionOnLinkedList = data.get("OptionOnLinkedList");
