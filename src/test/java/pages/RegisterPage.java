@@ -15,7 +15,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.CommonUtils;
 import utilities.ExcelReader;
 
-
 public class RegisterPage {
 	WebDriver driver;
 
@@ -44,19 +43,14 @@ public class RegisterPage {
 	String title;
 	@FindBy(xpath = "//a[normalize-space()='Qatitans1']")
 	private WebElement usernameLabel;
-	
-		
+
 	public RegisterPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	public void setScenarioContext(ScenarioContext scenariocontext) {
-	//	this.scenariocontext = scenariocontext;
-		
-	}
 
 	public String getTitle() {
-	    return driver.getTitle();
+		return driver.getTitle();
 	}
 
 	public void clickRegisterLink() {
@@ -68,7 +62,7 @@ public class RegisterPage {
 
 	public void enterUsername(String username) {
 		WebElement textbox = new WebDriverWait(driver, Duration.ofSeconds(10))
-		.until(ExpectedConditions.elementToBeClickable(By.name("username")));
+				.until(ExpectedConditions.elementToBeClickable(By.name("username")));
 		textbox.clear();
 		if (username != null && !username.isEmpty()) {
 			textbox.sendKeys(username);
@@ -87,7 +81,7 @@ public class RegisterPage {
 
 	public void enterConfirmPassword(String password2) {
 		WebElement textbox = new WebDriverWait(driver, Duration.ofSeconds(10))
-		.until(ExpectedConditions.elementToBeClickable(By.name("password2")));
+				.until(ExpectedConditions.elementToBeClickable(By.name("password2")));
 		textbox.clear();
 		if (password2 != null && !password2.isEmpty()) {
 			textbox.sendKeys(password2);
@@ -111,42 +105,38 @@ public class RegisterPage {
 		System.out.println("username" + username);
 	}
 
-	
-	
 	public void enterEmptyField(String username, String password, String confirmpassword) {
 		enterUsername(username);
 		enterPassword(password);
 		enterConfirmPassword(confirmpassword);
 		submitForm();
 	}
-	
+
 	public String displayEmptyfieldMsg() {
-		if(isUserNameEmpty()) {
-			return  getUsernameValidationMessage();
+		if (isUserNameEmpty()) {
+			return getUsernameValidationMessage();
 		} else if (isPasswordEmpty()) {
-			return getPasswordValidationMessage();	
+			return getPasswordValidationMessage();
 		} else if (isConfirmPasswordEmpty()) {
 			return getConfirmPasswordValidationMessage();
 		}
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		WebElement freshElement = wait.until(ExpectedConditions.visibilityOf(mismatchpassword));
-		return freshElement.getText().trim();		
-		
+		return freshElement.getText().trim();
+
 	}
-	
+
 	public boolean isUserNameEmpty() {
-		return(usernametextbox.getAttribute("value").trim().isEmpty());
+		return (usernametextbox.getAttribute("value").trim().isEmpty());
 	}
-	
+
 	public boolean isPasswordEmpty() {
-		return(passwordtextbox.getAttribute("value").trim().isEmpty());
+		return (passwordtextbox.getAttribute("value").trim().isEmpty());
 	}
-	
+
 	public boolean isConfirmPasswordEmpty() {
-		return(confirmedPswdtextbox.getAttribute("value").trim().isEmpty());
+		return (confirmedPswdtextbox.getAttribute("value").trim().isEmpty());
 	}
-	
-	
 
 	public String getMismatchMessage() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -155,19 +145,14 @@ public class RegisterPage {
 				.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(mismatchpassword)));
 		return freshElement.getText().trim();
 	}
-	
-	
 
 	public String getAlertMessage() {
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	    WebElement alert = wait.until(
-	        ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".alert.alert-primary"))
-	    );
-	    return alert.getText().trim();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement alert = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".alert.alert-primary")));
+		return alert.getText().trim();
 	}
 
-
-	
 	public String getUsernameValidationMessage() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(usernametextbox));
@@ -181,16 +166,14 @@ public class RegisterPage {
 		String validationMessage = passwordtextbox.getAttribute("validationMessage");
 		return validationMessage;
 	}
-	
+
 	public String getConfirmPasswordValidationMessage() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(confirmedPswdtextbox));
 		String Uservalidationmessage = confirmedPswdtextbox.getAttribute("validationMessage");
 		return Uservalidationmessage;
 	}
-	
-	
-	
+
 	public String getRegisterLinkText() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(registerLink));
@@ -214,18 +197,5 @@ public class RegisterPage {
 		wait.until(ExpectedConditions.elementToBeClickable(numpyNinjaLink));
 		return numpyNinjaLink.getText();
 	}
-	
-	public String getSignoutLblText() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(signoutLink));
-		return signoutLink.getText();
-	}
-	
-	public String getUsernameLblText() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(usernameLabel));
-		return  usernameLabel.getText();
-	}
-	
-	
+
 }

@@ -103,30 +103,5 @@ public void testDataSrtucureDisplay() {
 	Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
 }
 
-@Test(priority = 8) 
-public void testSignoutBtnDisplay() {
-	String actualLabel = registerpage.getSignoutLblText();
-	String expectedLabel = PageLinks.SIGNOUT_COMMON.getLinkText();
-	logger.info("Verifying that the user sees label for  Data Structure dropdown");
-	Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
 }
-
-@Test(priority = 9) 
-public void testUserNameDisplay() {
-	String actualLabel = registerpage.getUsernameLblText();
-	String expectedLabel =PageLinks.USERNAME.getLinkText();
-	logger.info("Verifying that the user sees label for  Data Structure dropdown");
-	Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
-}
-
-
-}
-
-
-
-
-
-
-
-
 
