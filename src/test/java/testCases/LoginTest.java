@@ -48,7 +48,7 @@ public class LoginTest extends Hooks{
 	public void testVerifySignInLink() {
 		loginpage.clickLoginLink();
 		String actualTitle = loginpage. getSigninLinkText();
-		String expectedTitle = "Sign in";
+		String expectedTitle = PageLinks.SIGNIN_LOGIN.getLinkText();
 		logger.info("Verifying that the user lands on the login page. expectedTitle:" + expectedTitle + ", actualTitle: " + actualTitle);
 		Assert.assertNotNull(actualTitle, "Title was null - possible page load failure?");
 		Assert.assertTrue(actualTitle.contains(expectedTitle), "Failure message");
@@ -67,11 +67,10 @@ public class LoginTest extends Hooks{
 	public void testUserLogout() {
 		background.userLoggedin();
 		loginpage.logout();
-		String expectedMessage = "Logged out successfully";
+		String expectedMessage = PageLinks.LOGGEDOUT_LOGIN.getLinkText();
 		String actualMessage = loginpage.getLogoutMessage(); 
 		Assert.assertTrue(actualMessage.contains(expectedMessage), "Failure message");
-	//	Assert.assertEquals(actualMessage, expectedMessage, "Success message mismatch!");
-		
+	
 	}
 	
 	@Test(priority = 5, dataProvider = "excelAllData", dataProviderClass = ExcelDataProvider.class)
@@ -85,22 +84,25 @@ public class LoginTest extends Hooks{
 	
 	@Test(priority = 6)
 	 void testNumpyNinjaLabel() {
-		String expectedLabel = "NumpyNinja";
+		//String expectedLabel = "NumpyNinja";
+		String expectedlabel= PageLinks.NUMPYNINJA_LOGIN.getLinkText();
 		String actualLabel = loginpage.getNumpyNinjaLinkText();
-        Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
+        Assert.assertEquals(actualLabel, expectedlabel, "Label mismatch!");
 	}
 	
 	@Test(priority = 7)
 	 void testRegisterLink() {
-		String expectedLabel = "Register";
+		//String expectedLabel = "Register";
+		String expectedlabel= PageLinks.REGISTER_LOGIN.getLinkText();
 		String actualLabel = loginpage.getRegisterLinkText();
-        Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
+        Assert.assertEquals(actualLabel, expectedlabel, "Label mismatch!");
 	}
 	
 	@Test(priority = 8)
 	 void testDataStructuresLabel() {
-		String expectedLabel = "Data Structures";
-		String actualLabel = loginpage.getDataStructureDropdownText();
+		//String expectedLabel = "Data Structures";
+	  String expectedLabel =PageLinks.DATASTRUCTURES_LOGIN.getLinkText();
+	    String actualLabel = loginpage.getDataStructureDropdownText();
         Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
 	}
 	
