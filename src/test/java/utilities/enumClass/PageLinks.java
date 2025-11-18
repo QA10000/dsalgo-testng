@@ -18,6 +18,7 @@ public enum PageLinks{
 	DATASTRUCTURES_LOGIN("Login","Data Structures"),
 	SIGNIN_LOGIN("Login","Sign in"),
 	REGISTER_LOGIN("Login","Register"),
+	LOGGEDOUT_LOGIN("Login","Logged out successfully"),
 	
 	PRACTICEQUESTIONS_ALLSUBMODULES("AllSubModules","Practice Questions"),
 	TRYHERE_ALLSUBMODULES("AllSubModules","Try here>>>"),
@@ -30,7 +31,11 @@ public enum PageLinks{
 	TRAVERSAL_LINKEDLIST("LinkedList","Traversal"),
 	INSERTION_LINKEDLIST("LinkedList","Insertion"),
 	DELETION_LINKEDLIST("LinkedList","Deletion"),
-
+	
+   //LinkedList Header
+	TOPICSCOVERED_LINKEDLIST("LinkedList","Topics Covered"),
+	LINKEDLIST_LINKEDLIST("LinkedList"	,"Linked List"),
+	
 	//Stack Module
 	OPERATIONSINSTACK_STACK("Stack","Operations in Stack"),
 	IMPLEMENTATION_STACK("Stack","Implementation"),
