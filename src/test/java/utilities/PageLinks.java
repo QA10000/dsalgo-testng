@@ -13,9 +13,6 @@ public enum PageLinks{
 	DATASTRUCTURES_COMMON("Common","Data Structures"),
 	USERNAME("Common","Qatitans1"),
 	SIGNOUT_COMMON("Common","Sign out"),
-	SIGNIN_LOGIN("Login","Sign in"),
-	REGISTER_LOGIN("Login","Register"),
-	LOGGEDOUT_LOGIN("Login","Logged out successfully"),
 	PRACTICEQUESTIONS_ALLSUBMODULES("AllSubModules","Practice Questions"),
 	TRYHERE_ALLSUBMODULES("AllSubModules","Try here>>>"),
 	LOGIN_PAGE_URL("URL", "https://dsportalapp.herokuapp.com/login"),
@@ -23,6 +20,17 @@ public enum PageLinks{
     DATA_STRUCTURE_PAGE_URL("URL", "https://dsportalapp.herokuapp.com/data-structures-introduction"),
     TRY_EDITOR_PAGE_URL("URL", "https://dsportalapp.herokuapp.com/try-editor"),
     DATA_STRUCTURE_PAGE_TIME_COMPLEXITY("URL","https://dsportalapp.herokuapp.com/data-structures-introduction/time-complexity/" ),
+	LOGGEDOUT_LOGIN("Signout","Logged out successfully"),
+
+
+
+    
+    //Login
+    NUMPYNINJA_LOGIN("Login","NumpyNinja"),
+	DATASTRUCTURES_LOGIN("Login","Data Structures"),
+	SIGNIN_LOGIN("Login","Sign in"),
+	REGISTER_LOGIN("Login","Register"),
+    
 
 	//LinkedList Module
 	INTRODUCTION_LINKEDLIST("LinkedList","Introduction"),
@@ -32,6 +40,19 @@ public enum PageLinks{
 	TRAVERSAL_LINKEDLIST("LinkedList","Traversal"),
 	INSERTION_LINKEDLIST("LinkedList","Insertion"),
 	DELETION_LINKEDLIST("LinkedList","Deletion"),
+//	LINKEDLIST_HEADER("LinkedListHeader", "Topics Covered"),
+//	LINKEDLIST_HEADERS("LinkedListHeader", "Linked List"),
+	TOPICSCOVERED_HEADER("LinkedListHeader","Topics Covered"),
+	LINKEDLIST_HEADER("LinkedListHeader","Linked List"),
+
+	
+	
+	
+	//LinkedList Header
+	//TOPICSCOVERED_LINKEDLIST("LinkedList","Topics Covered"),
+	//LINKEDLIST_LINKEDLIST("LinkedList"	,"Linked List"),
+	
+
 
 	//Stack Module
 	OPERATIONSINSTACK_STACK("Stack","Operations in Stack"),

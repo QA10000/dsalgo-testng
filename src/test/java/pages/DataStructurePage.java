@@ -1,3 +1,4 @@
+
 package pages;
 
 import java.time.Duration;
@@ -16,6 +17,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utilities.CommonUtils;
+import utilities.PageLinks;
 
 public class DataStructurePage {
     WebDriver driver;
@@ -72,8 +74,8 @@ public class DataStructurePage {
     @FindBy(css = "div.CodeMirror")
     WebElement codeMirrorEditor;
     
-    @FindBy(xpath = "//div[@role='alert']")
-	WebElement errorMessage;
+    @FindBy(xpath = "//div[@role='alert']") 
+    private WebElement errorMessage;
 
     Actions acts;
 
@@ -82,12 +84,12 @@ public class DataStructurePage {
     String successMessage = "";
 
     // URLs
-    String loginPageURL = CommonUtils.LOGIN_URL;
+  //  String loginPageURL = CommonUtils.LOGIN_URL;
     // String loginPageURL = "https://dsportalapp.herokuapp.com/login";
     // loginpageURL=https://dsportalapp.herokuapp.com/login
-    String dataStructurePage = CommonUtils.DS_URL;
-    String dataStructuresTimeComp = CommonUtils.DS_TS_URL;
-    String tryEditorPage = CommonUtils.TRY_EDTR_URL;
+  //  String dataStructurePage = CommonUtils.DS_URL;
+   // String dataStructuresTimeComp = CommonUtils.DS_TS_URL;
+  //  String tryEditorPage = CommonUtils.TRY_EDTR_URL;
     String homePageURL = CommonUtils.HOME_URL;
 
     public DataStructurePage(WebDriver driver) {
@@ -96,16 +98,9 @@ public class DataStructurePage {
         acts = new Actions(driver);
     }
 
-    public void Login() {
+   /* public void Login() {
         driver.get(loginPageURL);
-    }
-    
-	public String getErrorMessage() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.visibilityOf(errorMessage));
-		String ErrMsg = errorMessage.getText();
-		return ErrMsg;
-	}
+    }*/
 
     public void CorrectUsernameAndPassword(String uid, String pwd) {
         Username.sendKeys(uid);
@@ -125,7 +120,7 @@ public class DataStructurePage {
 
 
     public void dataStructuresIntroPage() {
-        driver.get(dataStructurePage);
+        driver.get(PageLinks.DATA_STRUCTURE_PAGE_URL.getLinkText());
     }
 
     public void clickStartBtn() {
@@ -139,11 +134,11 @@ public class DataStructurePage {
     }
 
     public void timeComplexityPage() {
-        driver.get(dataStructuresTimeComp);
+        driver.get(PageLinks.DATA_STRUCTURE_PAGE_TIME_COMPLEXITY.getLinkText());
     }
 
     public void tryHereEditorPage() {
-        driver.get(tryEditorPage);
+        driver.get(PageLinks.TRY_EDITOR_PAGE_URL.getLinkText());
     }
 
     public void clickDataStructuresGetStarted() {
@@ -312,4 +307,14 @@ public class DataStructurePage {
         wait.until(ExpectedConditions.elementToBeClickable(usernameLabel));
         return usernameLabel.getText();
     }
+    
+    public String getErrorMessage() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		wait.until(ExpectedConditions.visibilityOf(errorMessage));
+		String ErrMsg = errorMessage.getText();
+		return ErrMsg;
+	}
+    
+  
 }
+

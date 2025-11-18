@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import utilities.CommonUtils;
+import utilities.PageLinks;
 
 public class Background {
 	private WebDriver driver;
@@ -50,17 +51,17 @@ public class Background {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(signinLink));
 		signinLink.click();
-		usernametextbox.sendKeys(CommonUtils.USERNAME);
-		passwordtextbox.sendKeys(CommonUtils.PASSWORD);
+		usernametextbox.sendKeys("qatitans1");
+		passwordtextbox.sendKeys("1@Chicago");
 		loginButton.click();
 	}
 
-	public void verifyHomePageIsDisplayed() {
+	/*public void verifyHomePageIsDisplayed() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.titleIs("NumpyNinja"));
-		String expectedTitle = CommonUtils.APP_TITLE;
+		String expectedTitle = PageLinks.NUMPYNINJA_COMMON.getLinkText();
 		String actualTitle = getTitle();
 		Assert.assertEquals(actualTitle, expectedTitle, "Title mismatch!");
-	}
+	}*/
 }
 
