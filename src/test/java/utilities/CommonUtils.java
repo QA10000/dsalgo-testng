@@ -47,16 +47,7 @@ public class CommonUtils {
         return value;
     }
 
-    private static List<String> parseList(String key) {
-        String raw = properties.getProperty(key);
-        if (raw == null || raw.trim().isEmpty()) {
-            System.err.println("⚠️ Missing or empty list property: " + key);
-            return List.of();
-        }
-        return Arrays.stream(raw.split(","))
-                .map(String::trim)
-                .toList();
-    }
+  
 }
 
 
